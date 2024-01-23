@@ -1,2 +1,2 @@
 # rtg-graduation-page
-Riga Tech Girls Graduation Page
+Riga TechGirls Graduation Page
