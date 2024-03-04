@@ -17,6 +17,13 @@ bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 
+### Java ###
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
 ### IntelliJ IDEA ###
 .idea
 *.iws
