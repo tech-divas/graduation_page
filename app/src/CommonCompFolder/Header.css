@@ -1,0 +1,17 @@
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  padding: 10px 40px;
+
+  background-color: var(--primary-color);
+  color: var(--text-primary);
+  font-family: PT Mono;
+}
+.rtgLogo,
+.mentorshipLogo {
+  width: 100px;
+  height: auto;
+}
