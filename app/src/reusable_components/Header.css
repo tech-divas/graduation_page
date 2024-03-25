@@ -1,3 +1,7 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
 .headerContainer {
   display: flex;
   justify-content: space-between;
@@ -5,13 +9,17 @@
   position: sticky;
   top: 0;
   padding: 10px 40px;
-
   background-color: var(--primary-color);
   color: var(--text-primary);
   font-family: PT Mono;
+  height: 153px;
 }
 .rtgLogo,
 .mentorshipLogo {
   width: 100px;
   height: auto;
+}
+
+.pageName {
+  font-size: 36px;
 }

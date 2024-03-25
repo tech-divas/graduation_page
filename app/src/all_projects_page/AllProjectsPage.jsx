@@ -1,4 +1,4 @@
-import Header from "../CommonCompFolder/Header";
+import Header from "../reusable_components/Header";
 
 const AllProjectPage = () => {
   return (

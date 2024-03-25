@@ -7,10 +7,10 @@ const Header = () => {
         <img src="../assets/rtgLogo.png " alt="Riga TechGirls Logo" />
       </div>
       <div className="headerText">
-        <h1>Practice Projects</h1>
+        <p className="pageName">PRACTICE PROJECTS</p>
       </div>
       <div className="mentorshipLogo">
-        <img src="../assets/mentorshipLogo.png" alt="Mentorship Program Logo" />
+        <img src="../assets/fashionLogo.png" alt="Mentorship Program Logo" />
       </div>
     </div>
   );
