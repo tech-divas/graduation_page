@@ -25,8 +25,8 @@ INSERT INTO it_field (id, name) VALUES
 (6, 'QA & Testing');
 
 INSERT INTO season (id, name) VALUES
-(1, 'Mentorship 2023'),
-(2, 'Mentorship 2024');
+(1, '2023'),
+(2, '2024');
 
 INSERT INTO project (id, name, description, season_id) VALUES
 (1, 'Green Horizon', 'An initiative to develop sustainable, green technologies for urban environments. https://www.greenhorizon.com', 1),
