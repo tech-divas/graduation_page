@@ -1,4 +1,4 @@
-import Header from "../reusable_components/Header";
+import Header from "../reusable_components/header/Header";
 import Menu from "../reusable_components/Menu";
 
 const AllProjectPage = () => {

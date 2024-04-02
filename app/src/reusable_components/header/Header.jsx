@@ -1,6 +1,6 @@
 import "./Header.css";
-import rtgLogo from "../assets/rtgLogo.png";
-import mentorshipLogo from "../assets/mentorshipLogo.png";
+import rtgLogo from "../header/rtgLogo.png";
+import mentorshipLogo from "../header/mentorshipLogo.png";
 
 const Header = () => {
   return (
