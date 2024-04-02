@@ -1,16 +1,32 @@
 import "./Header.css";
+import rtgLogo from "../assets/rtgLogo.png";
+import mentorshipLogo from "../assets/mentorshipLogo.png";
 
 const Header = () => {
   return (
     <div className="headerContainer">
       <div className="rtgLogo">
-        <img src="../assets/rtgLogo.png " alt="Riga TechGirls Logo" />
+        <a href="https://rigatechgirls.com/">
+          <img
+            src={rtgLogo}
+            alt="Riga TechGirls Logo"
+            style={{ width: "300px" }}
+          />
+        </a>
       </div>
       <div className="headerText">
-        <p className="pageName">PRACTICE PROJECTS</p>
+        <a href="/">
+          <p className="pageName">PRACTICE PROJECTS</p>
+        </a>
       </div>
       <div className="mentorshipLogo">
-        <img src="../assets/fashionLogo.png" alt="Mentorship Program Logo" />
+        <a href="https://rigatechgirls.com/mentorship/">
+          <img
+            src={mentorshipLogo}
+            alt="Mentorship Program Logo"
+            style={{ width: "300px" }}
+          />
+        </a>
       </div>
     </div>
   );
