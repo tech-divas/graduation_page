@@ -22,7 +22,7 @@ const Menu = () => {
 
   return (
     <div className="menu">
-      <ul>
+      <ul className="menu-items">
         <li>
           <a href="/">Home</a>
         </li>
@@ -72,7 +72,11 @@ const Menu = () => {
           )}
         </li>
         <li>
-          <a href="#" onClick={toggleExpertsDropdown}>
+          <a
+            href="#"
+            onMouseEnter={toggleExpertsDropdown}
+            onMouseLeave={toggleExpertsDropdown}
+          >
             Experts/Speakers
           </a>
           {expertsDropdownVisible && (

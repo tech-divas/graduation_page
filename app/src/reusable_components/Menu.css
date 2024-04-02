@@ -1,0 +1,22 @@
+.menu {
+  margin-right: 60px;
+  padding-right: 0;
+  margin-left: 10px;
+}
+
+.menu-items {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.menu-items li {
+  margin-left: 50px;
+  list-style: none;
+}
+
+.menu-items a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+}
