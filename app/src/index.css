@@ -9,9 +9,16 @@
   --text-secondary: #0c0a2b;
 }
 
+@font-face {
+  font-family: "PT Mono";
+  src: local("PT Mono"), url("./fonts/PTMono-Regular.ttf") format("truetype");
+}
 body {
   margin: 0;
   padding: 0;
+  background: black;
+  font-family: PT Mono;
+  color: var(--text-primary);
 }
 
 /*   

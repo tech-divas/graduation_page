@@ -1,0 +1,16 @@
+.graduationYearButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 70px;
+}
+
+.graduationYearButton button {
+  height: 74px;
+  width: 463px;
+  display: felx;
+  justify-content: center;
+  color: var(--text-primary);
+  background-color: var(--accent-color);
+  font-size: 36px;
+}
