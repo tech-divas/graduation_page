@@ -6,7 +6,7 @@ export default function Footer() {
     mentorship@rigatechgirls.com</p>
     </div>
     <div className="footerImage">
-        <img src="../public/FooterImage.png" alt="Footer Photo" />
+        <img src="/FooterImage.png" alt="Footer Photo" />
     </div>
     </>
 }

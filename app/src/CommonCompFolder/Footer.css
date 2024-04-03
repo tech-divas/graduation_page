@@ -3,7 +3,7 @@
     text-align: center;
     justify-content: center;
     position: fixed;
-    padding: 20px;
+    padding: 10px;
     bottom: 120px;
     width: 100%;
   
@@ -16,5 +16,5 @@
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 95px;
+    height: 95px; 
 }
