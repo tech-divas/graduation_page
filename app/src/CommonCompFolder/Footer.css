@@ -1,0 +1,20 @@
+.footerContainer {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    position: fixed;
+    padding: 10px;
+    bottom: 120px;
+    width: 100%;
+  
+    background-color: var( --secondary-color);
+    color: var(--text-primary);
+    font-family: PT Mono;
+    font-size: 24px;
+}
+.footerImage{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 95px; 
+}
