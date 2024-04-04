@@ -13,4 +13,7 @@
   color: var(--text-primary);
   background-color: var(--accent-color);
   font-size: 36px;
+  font-family: "PT Mono";
+  border: none;
+  border-radius: 2px;
 }
