@@ -10,7 +10,7 @@ const Header = () => {
           <img
             src={rtgLogo}
             alt="Riga TechGirls Logo"
-            style={{ width: "300px" }}
+            style={{ width: "250px" }}
           />
         </a>
       </div>
@@ -24,7 +24,7 @@ const Header = () => {
           <img
             src={mentorshipLogo}
             alt="Mentorship Program Logo"
-            style={{ width: "300px" }}
+            style={{ width: "250px" }}
           />
         </a>
       </div>
