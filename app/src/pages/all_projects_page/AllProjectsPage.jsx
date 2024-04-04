@@ -3,6 +3,7 @@ import Footer from "../../reusable_components/footer/Footer";
 import Menu from "../../reusable_components/menu/Menu";
 import ProjectCard from "./project_card/ProjectCard";
 import GraduationYearButton from "./graduation_year_button/GraduationYearButton";
+import Search from "../../reusable_components/search/Search";
 import "./AllProjectsPage.css";
 
 const AllProjectPage = () => {
@@ -11,6 +12,7 @@ const AllProjectPage = () => {
       <Header />
       <Menu />
       <GraduationYearButton />
+      <Search />
       <div className="cardsContainer">
         <ProjectCard />
         <ProjectCard />
