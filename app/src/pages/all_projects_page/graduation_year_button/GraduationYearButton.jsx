@@ -1,4 +1,4 @@
-import "./GraduationPageButton.css";
+import "./GraduationYearButton.css";
 const GraduationYearButton = () => {
   return (
     <div className="graduationYearButton">

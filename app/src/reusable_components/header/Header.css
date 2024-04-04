@@ -4,6 +4,7 @@
   align-items: center;
   position: sticky;
   top: 0;
+  z-index: 1000;
   padding: 10px 40px;
   background-color: var(--primary-color);
   height: 153px;
@@ -12,7 +13,11 @@
 .pageName {
   font-size: 36px;
 }
+
 a {
   text-decoration: none;
-  color: inherit;
+  color: var(--text-primary);
+}
+a:hover {
+  color: var(--text-primary);
 }
