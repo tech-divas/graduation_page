@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navigate } from "react-router-dom";
-import AllProjectPage from "./all_projects_page/AllProjectsPage";
+import AllProjectPage from "../src/pages/all_projects_page/AllProjectsPage";
 
 function App() {
   return (
