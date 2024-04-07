@@ -1,11 +1,3 @@
-DROP TABLE IF EXISTS season;
-DROP TABLE IF EXISTS project;
-DROP TABLE IF EXISTS it_field;
-DROP TABLE IF EXISTS participant;
-DROP TABLE IF EXISTS sponsor;
-DROP TABLE IF EXISTS role;
-DROP TABLE IF EXISTS participant_enrollment;
-
 CREATE TABLE season (
 id INT,
 name VARCHAR(4),
@@ -14,7 +6,7 @@ PRIMARY KEY (id)
 
 CREATE TABLE project (
 id INT,
-name VARCHAR(100),
+name VARCHAR(255),
 description VARCHAR,
 season_id INT,
 PRIMARY KEY (id),
@@ -23,18 +15,18 @@ FOREIGN KEY (season_id) REFERENCES season(id)
 
 CREATE TABLE it_field (
 id INT,
-name VARCHAR(75),
+name VARCHAR(255),
 PRIMARY KEY (id)
 );
 
 CREATE TABLE participant (
 id INT,
 full_name VARCHAR(75),
-linkedin VARCHAR(100),
+linkedin VARCHAR(255),
 PRIMARY KEY (id)
 );
 
-CREATE TABLE sponsor (
+CREATE TABLE IF NOT EXISTS sponsor (
 id INT,
 name VARCHAR(75),
 season_id INT,

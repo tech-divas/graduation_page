@@ -1,32 +1,30 @@
 package com.mentorship.graduationpage.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.util.Set;
 
-@Getter
 @Setter
-@ToString
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "season")
-public class SeasonEntity {
+@Table(name = "participant")
+public class ParticipantEntity {
     @Id
     private Integer id;
+    @Column(name = "full_name")
     private String name;
-    @OneToMany(mappedBy = "season")
-    @ToString.Exclude
-    private Set<ProjectEntity> projects;
-    @OneToMany(mappedBy = "season")
-    @ToString.Exclude
+    private String linkedin;
+    @OneToMany(mappedBy = "participant")
     private Set<ParticipantEnrollmentEntity> enrollments;
 }

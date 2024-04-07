@@ -1,11 +1,15 @@
 package com.mentorship.graduationpage.controller;
 
-import com.fasterxml.jackson.annotation.JsonView;
-import com.mentorship.graduationpage.dto.ProjectDto;
-import com.mentorship.graduationpage.dto.view.View;
+import com.mentorship.graduationpage.dto.ProjectSummaryDTO;
 import com.mentorship.graduationpage.mapper.ProjectMapper;
 import com.mentorship.graduationpage.model.ProjectEntity;
 import com.mentorship.graduationpage.service.ProjectService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
@@ -24,19 +28,26 @@ public class ProjectController {
     private final ProjectService projectService;
     private final ProjectMapper projectMapper;
 
-    @JsonView(View.Summary.class)
+    @Operation(summary = "Get project list by year and page")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found projects",
+                    content = {@Content(mediaType = "application/json", schema = @Schema(implementation = ProjectSummaryDTO.class)) }),
+            @ApiResponse(responseCode = "404", description = "Projects not found", content = @Content) })
     @GetMapping()
-    public ResponseEntity<Page<ProjectDto>> getProjectsNamesAndIdBySeasonName(
-            @RequestParam("year") String seasonName,
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "9") int size) {
+    public ResponseEntity<Page<ProjectSummaryDTO>> getListOfProjectsBySeasonName(
+            @Parameter(description = "year") @RequestParam("year") String seasonName,
+            @Parameter(description = "page") @RequestParam(defaultValue = "0") int page,
+            @Parameter(description = "size") @RequestParam(defaultValue = "9") int size) {
         Page<ProjectEntity> projects = projectService.getProjectsBySeasonName(seasonName, page, size);
-        Page<ProjectDto> projectDtoPage = projects.
-                map(projectMapper::entityToDtoForProjectList).
-                map(projectDto -> new ProjectDto(projectDto.getId(), projectDto.getName(), projectDto.getDescription(), projectDto.getSeasonName()));
-        if(projectDtoPage.isEmpty()){
+        Page<ProjectSummaryDTO> projectDTOPage = projects.map(projectMapper::projectEntityToProjectSummaryDTO);
+        log.info("Mapped data:");
+        projectDTOPage.getContent().stream().map(ProjectSummaryDTO::toString).forEach(log::info);
+        if(projectDTOPage.isEmpty()){
+            log.warn("Project list page {} is empty", page);
             return ResponseEntity.noContent().build();
+        } else {
+            log.debug("Project list page {} with size {} is found", page, size);
+            return ResponseEntity.ok(projectDTOPage);
         }
-        return ResponseEntity.ok(projectDtoPage);
     }
 }
