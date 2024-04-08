@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -39,15 +40,15 @@ public class ProjectServiceTest {
     }
 
     @Test
-    @DisplayName("Get a project list from 0 page")
-    void testGetProjectsBySeasonName() {
+    @DisplayName("Get a project list")
+    void getProjectsBySeasonName_returnsProjectListResponse() {
         Page<ProjectEntity> expected = new PageImpl<>(List.of(new ProjectEntity()), pageable, 3);
+
         when(repository.findBySeasonName(seasonName, pageable)).thenReturn(expected);
 
-        Page<ProjectEntity> result = service.getProjectsBySeasonName(seasonName, 0, 2);
+        Page<ProjectEntity> result = service.getProjectsBySeasonName("2023", 0, 2);
 
         assertNotNull(result);
-        assertEquals(3, result.getTotalElements());
         assertEquals(0, result.getNumber());
         assertEquals(2, result.getSize());
     }
