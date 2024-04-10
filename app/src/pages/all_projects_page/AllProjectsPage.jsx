@@ -20,6 +20,8 @@ const AllProjectPage = () => {
         <ProjectCard />
         <ProjectCard />
         <ProjectCard />
+        <ProjectCard />
+        <ProjectCard />
       </div>
       <Footer />
     </div>
