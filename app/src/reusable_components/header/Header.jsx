@@ -15,9 +15,7 @@ const Header = () => {
         </a>
       </div>
       <div className="headerText">
-        <a href="/">
-          <p className="pageName">PRACTICE PROJECTS</p>
-        </a>
+        <p className="pageName">PRACTICE PROJECTS</p>
       </div>
       <div className="mentorshipLogo">
         <a href="https://rigatechgirls.com/mentorship/">

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Menu.css";
 
 const Menu = () => {
@@ -11,7 +12,7 @@ const Menu = () => {
           <a href="#">Projects</a>
           <ul className="projectsDropdown">
             <li>
-              <a href="#">2023</a>
+              <Link to="/projects">2023</Link>
             </li>
             <li>
               <a href="#">2024</a>
@@ -22,7 +23,7 @@ const Menu = () => {
           <a href="#">Mentees</a>
           <ul className="menteesDropdown">
             <li>
-              <a href="#">2023</a>
+              <Link to="/mentees">2023</Link>
             </li>
             <li>
               <a href="#">2024</a>
@@ -33,7 +34,7 @@ const Menu = () => {
           <a href="#">Mentors</a>
           <ul className="mentorsDropdown">
             <li>
-              <a href="#">2023</a>
+              <Link to="/mentors">2023</Link>
             </li>
             <li>
               <a href="#">2024</a>
@@ -44,7 +45,7 @@ const Menu = () => {
           <a href="#">Experts/Speakers</a>
           <ul className="expertsDropdown">
             <li>
-              <a href="#">2023</a>
+              <Link to="/experts">2023</Link>
             </li>
             <li>
               <a href="#">2024</a>
