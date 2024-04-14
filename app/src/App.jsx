@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import AllProjectPage from "../src/pages/all_projects_page/AllProjectsPage";
-import ProjectPage from "./pages/project_page/ProjectPage";
-import HomePage from "./pages/home_page/HomePage";
-import ExpertsSpeakersPage from "./pages/experts_speakers_page/ExpertsSpeakersPage";
-import MenteesPage from "./pages/mentees_page/MenteesPage";
-import MentorsPage from "./pages/mentors _page/MentorsPage";
+import AllProjectPage from "../src/pages/2023/all_projects_page/AllProjectsPage";
+import ProjectPage from "./pages/2023/project_page/ProjectPage";
+import HomePage from "./pages/2023/home_page/HomePage";
+import ExpertsSpeakersPage from "./pages/2023/experts_speakers_page/ExpertsSpeakersPage";
+import MenteesPage from "./pages/2023/mentees_page/MenteesPage";
+import MentorsPage from "./pages/2023/mentors _page/MentorsPage";
 
 function App() {
   return (
