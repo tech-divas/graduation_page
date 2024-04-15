@@ -40,9 +40,9 @@ public class ProjectServiceTest {
     }
 
     @Test
-    @DisplayName("Get a project list")
-    void getProjectsBySeasonName_returnsProjectListResponse() {
-        Page<ProjectEntity> expected = new PageImpl<>(List.of(new ProjectEntity()), pageable, 3);
+    @DisplayName("Get a project page")
+    void getProjectsBySeasonName_returnsProjectsPage() {
+        Page<ProjectEntity> expected = new PageImpl<>(List.of(new ProjectEntity()), pageable, 2);
 
         when(repository.findBySeasonName(seasonName, pageable)).thenReturn(expected);
 
