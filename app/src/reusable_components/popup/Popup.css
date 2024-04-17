@@ -4,9 +4,37 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 40%;
-  max-width: 600px;
+  max-width: 800px;
   background-color: black;
   z-index: 1000;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.popup.active {
+  opacity: 1;
+}
+
+.popupContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.leftColumn,
+.middleColumn,
+.rightColumn {
+  flex: 1;
+}
+.leftColumn {
+  order: 1;
+}
+
+.middleColumn {
+  order: 2;
+}
+.rightColumn {
+  order: 3;
 }
 
 h2 {
