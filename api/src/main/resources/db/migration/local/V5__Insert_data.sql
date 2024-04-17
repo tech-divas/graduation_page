@@ -25,8 +25,8 @@ INSERT INTO it_field (id, name) VALUES
 (6, 'QA & Testing');
 
 INSERT INTO season (id, name) VALUES
-(1, 'Mentorship 2023'),
-(2, 'Mentorship 2024');
+(1, '2023'),
+(2, '2024');
 
 INSERT INTO project (id, name, description, season_id) VALUES
 (1, 'Green Horizon', 'An initiative to develop sustainable, green technologies for urban environments. https://www.greenhorizon.com', 1),
@@ -36,12 +36,24 @@ INSERT INTO project (id, name, description, season_id) VALUES
 (5, 'EduBridge', 'An online learning platform aimed at bridging the gap between traditional education and modern career requirements. https://www.edubridge.com', 2),
 (6, 'SpaceQuest', 'A project dedicated to making space exploration data accessible through an interactive website. https://www.spacequest.com', 2);
 
-INSERT INTO participant_enrollment (id, role_id, season_id, project_id, field_id, participant_id) VALUES
-(1, 1, 1, 1, 2, 10),
-(2, 2, 1, 3, 3, 5),
-(3, 1, 1, 3, 3, 4),
-(4, 3, 1, null, 6, 2),
-(5, 1, 2, 5, 1, 3);
+INSERT INTO project_type (id, name) VALUES
+(1, 'Practice Project'),
+(2, 'SpringUP'),
+(3, 'Commerce'),
+(4, 'Healthcare');
+
+INSERT INTO participant_enrollment (id, role_id, season_id, project_id, field_id, participant_id, project_type_id) VALUES
+(1, 1, 1, 1, 2, 10, 1),
+(2, 2, 1, 3, 3, 5, 1),
+(3, 1, 1, 3, 3, 4, 1),
+(4, 3, 1, null, 6, 2, null),
+(5, 1, 2, 5, 1, 3, 1),
+(6, 1, 2, 5, 1, 3, 4),
+(7, 1, 2, 5, 1, 3, 1),
+(8, 1, 2, 4, 1, 3, 1),
+(9, 1, 2, 4, 1, 3, 3),
+(10, 1, 2, 6, 1, 3, 4),
+(11, 1, 2, 6, 1, 3, 2);
 
 INSERT INTO sponsor (id, name, season_id) VALUES
 (1, 'Tech Innovate', 1),
