@@ -13,3 +13,16 @@
   z-index: 999;
   pointer-events: none;
 }
+
+.peopleList {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+}
+
+ .peopleList > div {
+  flex-basis: 50%;
+} 
