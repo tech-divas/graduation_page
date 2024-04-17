@@ -7,20 +7,22 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
 
 import java.util.Set;
 
-@Setter
 @Getter
-@RequiredArgsConstructor
+@Setter
+@NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "role")
 public class RoleEntity {
     @Id
+    @NonNull
     private Integer id;
+    @NonNull
     private String name;
 
     @OneToMany(mappedBy = "role")

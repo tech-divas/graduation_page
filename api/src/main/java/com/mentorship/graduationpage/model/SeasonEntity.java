@@ -7,27 +7,25 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.util.Set;
 
 @Getter
 @Setter
-@ToString
-@RequiredArgsConstructor
+@NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "season")
 public class SeasonEntity {
     @Id
+    @NonNull
     private Integer id;
+    @NonNull
     private String name;
     @OneToMany(mappedBy = "season")
-    @ToString.Exclude
     private Set<ProjectEntity> projects;
     @OneToMany(mappedBy = "season")
-    @ToString.Exclude
     private Set<ParticipantEnrollmentEntity> enrollments;
 }

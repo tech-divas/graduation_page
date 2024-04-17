@@ -1,7 +1,6 @@
 package com.mentorship.graduationpage.mapper;
 
 import com.mentorship.graduationpage.dto.ProjectSummaryDTO;
-import com.mentorship.graduationpage.dto.ProjectTypeDTO;
 import com.mentorship.graduationpage.model.ParticipantEnrollmentEntity;
 import com.mentorship.graduationpage.model.ProjectEntity;
 import org.mapstruct.AfterMapping;
@@ -20,10 +19,11 @@ public interface ProjectMapper {
     @AfterMapping
     default void mapProjectTypes(ProjectEntity projectEntity, @MappingTarget ProjectSummaryDTO dto) {
         if (projectEntity.getEnrollments() != null) {
-            Set<ProjectTypeDTO> projectTypes = ProjectTypeMapper.INSTANCE.entityToDTOSet(projectEntity
+            Set<String> projectTypes = projectEntity
                     .getEnrollments().stream()
                     .map(ParticipantEnrollmentEntity::getProjectType)
-                    .collect(Collectors.toSet()));
+                    .map(pt -> pt != null ? pt.getName() : null)
+                    .collect(Collectors.toSet());
             dto.setProjectTypes(projectTypes);
         }
     }

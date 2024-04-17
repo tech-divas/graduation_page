@@ -12,5 +12,5 @@ import java.util.Set;
 public class ProjectSummaryDTO {
     private Integer id;
     private String name;
-    private Set<ProjectTypeDTO> projectTypes;
+    private Set<String> projectTypes;
 }
