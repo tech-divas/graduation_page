@@ -1,6 +1,12 @@
+import { useState } from "react";
 import "./Search.css";
 
-const Search = () => {
+const Search = ({ handleSearch }) => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const handleChange = (e) => {
+    setSearchQuery(e.target.value);
+    handleSearch(e.target.value);
+  };
   return (
     <div className="searchContainer">
       <div className="filterButton">
@@ -8,7 +14,12 @@ const Search = () => {
       </div>
 
       <div className="searchInput">
-        <input type="text" placeholder="Search Project" />
+        <input
+          type="text"
+          placeholder="Search Project"
+          value={searchQuery}
+          onChange={handleChange}
+        />
       </div>
     </div>
   );
