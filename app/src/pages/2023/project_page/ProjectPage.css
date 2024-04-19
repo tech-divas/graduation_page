@@ -23,6 +23,6 @@
   margin: 30px;
 }
 
- .peopleList > div {
+.peopleList > div {
   flex-basis: 50%;
-} 
+}
