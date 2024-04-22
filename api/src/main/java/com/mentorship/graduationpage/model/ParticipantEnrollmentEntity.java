@@ -10,7 +10,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
-import org.springframework.lang.Nullable;
 
 
 @Getter
@@ -29,7 +28,6 @@ public class ParticipantEnrollmentEntity {
     @ManyToOne
     @JoinColumn(name = "season_id")
     private SeasonEntity season;
-    @Nullable
     @ManyToOne
     @JoinColumn(name = "project_id")
     private ProjectEntity project;
@@ -39,7 +37,6 @@ public class ParticipantEnrollmentEntity {
     @ManyToOne
     @JoinColumn(name = "participant_id")
     private ParticipantEntity participant;
-    @Nullable
     @ManyToOne
     @JoinColumn(name = "project_type_id")
     private ProjectTypeEntity projectType;
