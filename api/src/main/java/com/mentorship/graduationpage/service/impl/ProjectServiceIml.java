@@ -8,6 +8,8 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 import static org.springframework.data.domain.PageRequest.of;
 
 @Service
@@ -21,5 +23,11 @@ public class ProjectServiceIml implements ProjectService {
     public Page<ProjectEntity> getProjectsBySeasonName(String seasonName, int page, int size) {
         log.info("Fetching projects from page {} of size {}", page, size);
         return projectRepository.findBySeasonName(seasonName, of(page, size));
+    }
+
+    @Override
+    public Optional<ProjectEntity> getProjectById(int id) {
+        log.info("Fetching project with id {}", id);
+        return projectRepository.findById(id);
     }
 }
