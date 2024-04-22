@@ -24,7 +24,6 @@ public class RoleEntity {
     private Integer id;
     @NonNull
     private String name;
-
     @OneToMany(mappedBy = "role")
     private Set<ParticipantEnrollmentEntity> enrollments;
 }
