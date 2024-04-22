@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,10 +34,10 @@ public class ProjectController {
     private final ProjectMapper projectMapper;
 
     @Operation(description = "Get project list by year and page",
-    responses = {
+            responses = {
             @ApiResponse(responseCode = "200", description = "Found projects",
                     content = {@Content(mediaType = "application/json", schema = @Schema(allOf = {ProjectSummaryDTO.class, Page.class}))}),
-            @ApiResponse(responseCode = "204", description = "No content", content = @Content)})
+                    @ApiResponse(responseCode = "204", description = "No content", content = @Content)})
     @GetMapping
     public ResponseEntity<Page<ProjectSummaryDTO>> getProjectsBySeasonName(
             @RequestParam("year") String seasonName,
@@ -57,12 +58,12 @@ public class ProjectController {
 
     @Operation(description = "Get project by id with participants info",
             responses = {
-                    @ApiResponse(responseCode = "200", description = "Found project",
-                            content = {@Content(mediaType = "application/json", schema = @Schema(contentSchema = ProjectDetailsDTO.class))}),
+            @ApiResponse(responseCode = "200", description = "Found project",
+                            content = {@Content(mediaType = "application/json", schema = @Schema(implementation = ProjectDetailsDTO.class))}),
                     @ApiResponse(responseCode = "404", description = "Not found", content = @Content)})
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProjectDetailsDTO> getProjectById(@PathVariable int id) {
+    public ResponseEntity<ProjectDetailsDTO> getProjectById(@NonNull @PathVariable(required = true) int id) {
         Optional<ProjectDetailsDTO> project = projectService.getProjectById(id)
                 .flatMap(entity -> Optional.ofNullable(projectMapper.projectEntityToProjectDetailsDTO(entity)));
         if (project.isEmpty()) {
