@@ -37,7 +37,7 @@ class ProjectControllerTest {
     private ProjectService projectService;
     @MockBean
     private ProjectMapper projectMapper;
-    private static final String URL = "/api/projects";
+    private static final String URL = "/projects";
     private ProjectSummaryDTO dummyDto;
     private String seasonName;
     @BeforeEach
