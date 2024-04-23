@@ -27,7 +27,7 @@ import java.util.Optional;
 @RestController
 @RequiredArgsConstructor
 @Log4j2
-@RequestMapping("/api/projects")
+@RequestMapping("/projects")
 public class ProjectController {
 
     private final ProjectService projectService;
