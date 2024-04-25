@@ -13,11 +13,14 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,11 +39,12 @@ public class ProjectController {
     @Operation(description = "Get project list by year and page",
             responses = {
             @ApiResponse(responseCode = "200", description = "Found projects",
-                    content = {@Content(mediaType = "application/json", schema = @Schema(allOf = {ProjectSummaryDTO.class, Page.class}))}),
+                    content = {@Content(mediaType = "application/json", schema = @Schema(allOf = {ProjectSummaryDTO.class, Pageable.class}))}),
                     @ApiResponse(responseCode = "204", description = "No content", content = @Content)})
+    @CrossOrigin(methods = RequestMethod.GET)
     @GetMapping
     public ResponseEntity<Page<ProjectSummaryDTO>> getProjectsBySeasonName(
-            @RequestParam("year") String seasonName,
+            @RequestParam(defaultValue = "", required = false, value = "year") String seasonName,
             @RequestParam(defaultValue = "0", required = false) int page,
             @RequestParam(defaultValue = "8", required = false) int size) {
         Page<ProjectEntity> projects = projectService.getProjectsBySeasonName(seasonName, page, size);
@@ -60,8 +64,8 @@ public class ProjectController {
             responses = {
             @ApiResponse(responseCode = "200", description = "Found project",
                             content = {@Content(mediaType = "application/json", schema = @Schema(implementation = ProjectDetailsDTO.class))}),
-                    @ApiResponse(responseCode = "404", description = "Not found", content = @Content)})
-
+            @ApiResponse(responseCode = "404", description = "Not found", content = @Content)})
+    @CrossOrigin(methods = RequestMethod.GET)
     @GetMapping("/{id}")
     public ResponseEntity<ProjectDetailsDTO> getProjectById(@NonNull @PathVariable(required = true) int id) {
         Optional<ProjectDetailsDTO> project = projectService.getProjectById(id)
