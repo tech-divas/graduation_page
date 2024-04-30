@@ -7,11 +7,13 @@ import "./ProjectPage.css";
 import MenteeCard from "./MenteesProjectComp";
 import MentorCard from "./ProjectMentorComp";
 import Footer from "../../../reusable_components/footer/Footer";
+import { useParams } from "react-router-dom";
 
 const ProjectPage = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [selectedPerson, setSelectedPerson] = useState(null);
   const [isBackgroundBlurred, setIsBackgroundBlurred] = useState(false);
+  const { projectId } = useParams();
 
   const handlePersonClick = (person) => {
     setSelectedPerson(person);
@@ -25,53 +27,93 @@ const ProjectPage = () => {
   };
 
   const people = [
-    { name: "Ilze", type: "mentor", link: "https://www.linkedin.com/", info: "Some additional info about a person."},
-    { name: "Zane", type: "mentor", link: "https://www.linkedin.com/", info: "Some additional info about a person." },
-    { name: "Ieva", type: "mentee", link: "https://www.linkedin.com/", info: "Some additional info about a person." },
-    { name: "Kristine", type: "mentee", link: "https://www.linkedin.com/", info: "Some additional info about a person." },
-    { name: "Ieva", type: "mentee", link: "https://www.linkedin.com/", info: "Some additional info about a person." },
-    { name: "Kristine", type: "mentee", link: "https://www.linkedin.com/", info: "Some additional info about a person." },
-    { name: "Ieva", type: "mentee", link: "https://www.linkedin.com/", info: "Some additional info about a person." },
-    { name: "Kristine", type: "mentee", link: "https://www.linkedin.com/", info: "Some additional info about a person." }
-  ]
+    {
+      name: "Ilze",
+      type: "mentor",
+      link: "https://www.linkedin.com/",
+      info: "Some additional info about a person.",
+    },
+    {
+      name: "Zane",
+      type: "mentor",
+      link: "https://www.linkedin.com/",
+      info: "Some additional info about a person.",
+    },
+    {
+      name: "Ieva",
+      type: "mentee",
+      link: "https://www.linkedin.com/",
+      info: "Some additional info about a person.",
+    },
+    {
+      name: "Kristine",
+      type: "mentee",
+      link: "https://www.linkedin.com/",
+      info: "Some additional info about a person.",
+    },
+    {
+      name: "Ieva",
+      type: "mentee",
+      link: "https://www.linkedin.com/",
+      info: "Some additional info about a person.",
+    },
+    {
+      name: "Kristine",
+      type: "mentee",
+      link: "https://www.linkedin.com/",
+      info: "Some additional info about a person.",
+    },
+    {
+      name: "Ieva",
+      type: "mentee",
+      link: "https://www.linkedin.com/",
+      info: "Some additional info about a person.",
+    },
+    {
+      name: "Kristine",
+      type: "mentee",
+      link: "https://www.linkedin.com/",
+      info: "Some additional info about a person.",
+    },
+  ];
 
   return (
     <>
-    <div className={`background ${isBackgroundBlurred ? "blurred" : ""}`}>
-      <Header />
-      <Menu />
-      <ProjectInfo />
-      
-      <div className="peopleList">
-        {people.map((person, index) => (
-          <div key={index}>
-            {person.type === "mentor" ? (
-              <MentorCard
-                name={person.name}
-                type={person.type}
-                link={person.link}
-                onReadMore={() => handlePersonClick(person)}
-              />
-            ) : (
-              <MenteeCard
-                name={person.name}
-                type={person.type}
-                link={person.link}
-                onReadMore={() => handlePersonClick(person)}
-              />
-            )}
-          </div>
-        ))}
+      <div className={`background ${isBackgroundBlurred ? "blurred" : ""}`}>
+        <Header />
+        <Menu />
+        <ProjectInfo projectId={projectId} />
+
+        <div className="peopleList">
+          {people.map((person, index) => (
+            <div key={index}>
+              {person.type === "mentor" ? (
+                <MentorCard
+                  name={person.name}
+                  type={person.type}
+                  link={person.link}
+                  onReadMore={() => handlePersonClick(person)}
+                />
+              ) : (
+                <MenteeCard
+                  name={person.name}
+                  type={person.type}
+                  link={person.link}
+                  onReadMore={() => handlePersonClick(person)}
+                />
+              )}
+            </div>
+          ))}
+        </div>
+        <Popup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          message={`Display data for ${selectedPerson}`}
+        />
+        {isBackgroundBlurred && <div className="backgroundBlur"></div>}
       </div>
-      <Popup
-        isOpen={isPopupOpen}
-        onClose={handleClosePopup}
-        message={`Display data for ${selectedPerson}`}
-      />
-      {isBackgroundBlurred && <div className="backgroundBlur"></div>}
-    </div>
       <Footer />
-      </>
+    </>
   );
 };
 

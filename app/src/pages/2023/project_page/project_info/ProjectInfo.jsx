@@ -1,11 +1,26 @@
 import "./ProjectInfo.css";
 import { Link } from "react-router-dom";
 import mieraLacisImage from "./mieraLacis.png";
-const ProjectInfo = () => {
+import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
+
+const ProjectInfo = ({ projectId }) => {
+  const [projectData, setProjectData] = useState(null);
+
+  useEffect(() => {
+    fetch(`https://graduation-page.onrender.com/projects/${projectId}`)
+      .then((response) => response.json())
+      .then((data) => setProjectData(data))
+      .catch((error) => console.error("Error fetching project data", error));
+  }, [projectId]);
+
+  if (!projectData) {
+    return <div>Loading...</div>;
+  }
   return (
     <div>
       <div className="projectNameContainer">
-        <button className="projectName">Project Name</button>
+        <button className="projectName">{projectData.name}</button>
       </div>
 
       <div className="projectImages">
@@ -25,16 +40,13 @@ const ProjectInfo = () => {
         </Link>
       </div>
       <div className="projectDescriptionContainer">
-        <p className="projectDescription">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et
-          fringilla dolor. Fusce ac consequat nisi. Duis fermentum erat eget
-          congue mattis. Nulla facilisi. Phasellus vestibulum nibh id orci
-          pulvinar, sit amet gravida nisi mollis. Cras ultricies justo sit amet
-          quam blandit, et facilisis lorem vehicula. Vestibulum sit amet
-          pulvinar nisi.
-        </p>
+        <p className="projectDescription">{projectData.description}</p>
       </div>
     </div>
   );
 };
+ProjectInfo.propTypes = {
+  projectId: PropTypes.string.isRequired,
+};
+
 export default ProjectInfo;
