@@ -45,7 +45,7 @@ const AllProjectPage = () => {
 
       <div className="cardsContainer">
         {filteredProjects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+          <ProjectCard key={project.id} project={project.name} />
         ))}
       </div>
 
