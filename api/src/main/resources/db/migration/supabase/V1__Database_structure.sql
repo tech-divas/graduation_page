@@ -9,6 +9,7 @@ id INT,
 name VARCHAR(255),
 description VARCHAR,
 season_id INT,
+link VARCHAR,
 PRIMARY KEY (id),
 FOREIGN KEY (season_id) REFERENCES season(id)
 );

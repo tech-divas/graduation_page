@@ -4,14 +4,11 @@ import com.mentorship.graduationpage.dto.ParticipantDTO;
 import com.mentorship.graduationpage.dto.ProjectDetailsDTO;
 import com.mentorship.graduationpage.dto.ProjectSummaryDTO;
 import com.mentorship.graduationpage.model.ParticipantEnrollmentEntity;
-import com.mentorship.graduationpage.model.ParticipantEntity;
 import com.mentorship.graduationpage.model.ProjectEntity;
-import com.mentorship.graduationpage.model.ProjectTypeEntity;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
-import org.mapstruct.Named;
 import org.mapstruct.ReportingPolicy;
 
 import java.util.Set;

@@ -20,14 +20,15 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
+import java.util.Set;
 
 @Tag(name = "Project service", description = "Project controller API")
 @RestController
+@CrossOrigin
 @RequiredArgsConstructor
 @Log4j2
 @RequestMapping("/projects")
@@ -41,14 +42,13 @@ public class ProjectController {
             @ApiResponse(responseCode = "200", description = "Found projects",
                     content = {@Content(mediaType = "application/json", schema = @Schema(allOf = {ProjectSummaryDTO.class, Pageable.class}))}),
                     @ApiResponse(responseCode = "204", description = "No content", content = @Content)})
-    @CrossOrigin(methods = RequestMethod.GET)
     @GetMapping
     public ResponseEntity<Page<ProjectSummaryDTO>> getProjectsBySeasonName(
             @RequestParam(defaultValue = "", required = false, value = "year") String seasonName,
             @RequestParam(defaultValue = "0", required = false) int page,
             @RequestParam(defaultValue = "8", required = false) int size) {
-        Page<ProjectEntity> projects = projectService.getProjectsBySeasonName(seasonName, page, size);
-        Page<ProjectSummaryDTO> projectSummaryDTOPage = projects.map(projectMapper::projectEntityToProjectSummaryDTO);
+        Page<ProjectSummaryDTO> projectSummaryDTOPage = projectService.getProjectsBySeasonName(seasonName, page, size)
+                .map(projectMapper::projectEntityToProjectSummaryDTO);
         log.info("Mapped data:");
         projectSummaryDTOPage.stream().map(ProjectSummaryDTO::toString).forEach(log::info);
         if(projectSummaryDTOPage.isEmpty()){
@@ -64,18 +64,67 @@ public class ProjectController {
             responses = {
             @ApiResponse(responseCode = "200", description = "Found project",
                             content = {@Content(mediaType = "application/json", schema = @Schema(implementation = ProjectDetailsDTO.class))}),
-            @ApiResponse(responseCode = "404", description = "Not found", content = @Content)})
-    @CrossOrigin(methods = RequestMethod.GET)
+                    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content),
+                    @ApiResponse(responseCode = "404", description = "Not found", content = @Content),
+                    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)})
     @GetMapping("/{id}")
-    public ResponseEntity<ProjectDetailsDTO> getProjectById(@NonNull @PathVariable(required = true) int id) {
+    public ResponseEntity<ProjectDetailsDTO> getProjectById(@NonNull @PathVariable int id) {
+//        Optional<ProjectDetailsDTO> project = projectService.getProjectById(id)
+//                .flatMap(entity -> Optional.ofNullable(projectMapper.projectEntityToProjectDetailsDTO(entity)));
         Optional<ProjectDetailsDTO> project = projectService.getProjectById(id)
-                .flatMap(entity -> Optional.ofNullable(projectMapper.projectEntityToProjectDetailsDTO(entity)));
+                .map(projectMapper::projectEntityToProjectDetailsDTO);
         if (project.isEmpty()) {
             log.warn("Project with id {} is not found.", id);
             return ResponseEntity.notFound().build();
         } else {
             log.debug("Project with id {} is found: {}", id, project);
             return ResponseEntity.ok(project.get());
+        }
+    }
+
+    @Operation(description = "Search projects by name",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Found projects",
+                            content = {@Content(mediaType = "application/json", schema = @Schema(implementation = ProjectSummaryDTO.class))}),
+                    @ApiResponse(responseCode = "204", description = "No content", content = @Content)})
+    @GetMapping("/search")
+    public ResponseEntity<Page<ProjectSummaryDTO>> searchProjects(
+            @RequestParam String query,
+            @RequestParam(defaultValue = "0", required = false) int page,
+            @RequestParam(defaultValue = "8", required = false) int size) {
+        Page<ProjectSummaryDTO> projectSummaryDTOPage = projectService.searchProjects(query, page, size)
+                .map(projectMapper::projectEntityToProjectSummaryDTO);
+        log.info("Mapped data:");
+        projectSummaryDTOPage.stream().map(ProjectSummaryDTO::toString).forEach(log::info);
+        if(projectSummaryDTOPage.isEmpty()){
+            log.warn("Project list page {} is empty", page);
+            return ResponseEntity.noContent().build();
+        } else {
+            log.debug("Project list page {} with size {} is found", page, size);
+            return ResponseEntity.ok(projectSummaryDTOPage);
+        }
+    }
+
+    @Operation(description = "Filter projects by projects types",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Found projects",
+                            content = {@Content(mediaType = "application/json", schema = @Schema(implementation = ProjectSummaryDTO.class))}),
+                    @ApiResponse(responseCode = "204", description = "No content", content = @Content)})
+    @GetMapping("/filter")
+    public ResponseEntity<Page<ProjectSummaryDTO>> filterByProjectType(
+            @RequestParam Set<String> type,
+            @RequestParam(defaultValue = "0", required = false) int page,
+            @RequestParam(defaultValue = "8", required = false) int size) {
+        Page<ProjectSummaryDTO> projectSummaryDTOPage = projectService.filterByProjectType(type, page, size)
+                .map(projectMapper::projectEntityToProjectSummaryDTO);
+        log.info("Mapped data:");
+        projectSummaryDTOPage.stream().map(ProjectSummaryDTO::toString).forEach(log::info);
+        if(projectSummaryDTOPage.isEmpty()){
+            log.warn("Project list page {} is empty", page);
+            return ResponseEntity.noContent().build();
+        } else {
+            log.debug("Project list page {} with size {} is found", page, size);
+            return ResponseEntity.ok(projectSummaryDTOPage);
         }
     }
 }
