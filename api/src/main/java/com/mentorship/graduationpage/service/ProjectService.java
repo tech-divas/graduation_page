@@ -12,4 +12,3 @@ public interface ProjectService {
     Page<ProjectEntity> searchProjects(String query, int page, int size);
     Page<ProjectEntity> filterByProjectType(Set<String> projectTypes, int page, int size);
 }
-
