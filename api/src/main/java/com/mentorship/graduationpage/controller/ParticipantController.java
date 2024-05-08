@@ -2,9 +2,9 @@ package com.mentorship.graduationpage.controller;
 
 import com.mentorship.graduationpage.dto.ParticipantDTO;
 import com.mentorship.graduationpage.mapper.ParticipantMapper;
-import com.mentorship.graduationpage.model.ParticipantEntity;
 import com.mentorship.graduationpage.service.ParticipantService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@Tag(name = "Participant service", description = "Participant controller API")
+@Tag(name = "Participant service", description = "Provides endpoints for participants related operations")
 @RestController
 @CrossOrigin
 @RequiredArgsConstructor
@@ -30,15 +30,17 @@ public class ParticipantController {
     private final ParticipantService participantService;
     private final ParticipantMapper participantMapper;
 
-    @Operation(description = "Get participants list by role and page",
+    @Operation(summary = "Get participants list by role and page.",
+            description = "Fetches a paginated list of participants filtered by their role.",
             responses = {
                     @ApiResponse(responseCode = "200", description = "Found projects",
                             content = {@Content(mediaType = "application/json", schema = @Schema(allOf = {ParticipantDTO.class, Pageable.class}))}),
-                    @ApiResponse(responseCode = "204", description = "No content", content = @Content),
-                    @ApiResponse(responseCode = "400", description = "Required parameter is not present", content = @Content),
-                    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)})
+                    @ApiResponse(responseCode = "204", description = "No participants found matching the criteria.", content = @Content),
+                    @ApiResponse(responseCode = "400", description = "Search query parameter is missing or invalid.", content = @Content),
+                    @ApiResponse(responseCode = "500", description = "Internal server error.", content = @Content)})
     @GetMapping("/{role}")
     public ResponseEntity<Page<ParticipantDTO>> getParticipantsByRole(
+            @Parameter(description = "The role of the participants to search for. Valid roles include mentees, mentors, experts.", required = true)
             @PathVariable String role,
             @RequestParam(defaultValue = "0", required = false) int page,
             @RequestParam(defaultValue = "8", required = false) int size) {
@@ -55,13 +57,14 @@ public class ParticipantController {
         }
     }
 
-    @Operation(description = "Search participants by name",
+    @Operation(summary = "Search participants by name",
+            description = "Performs a search across participants based on a provided query name (partial or full name match), returning a paginated list of matching participants.",
             responses = {
                     @ApiResponse(responseCode = "200", description = "Found projects",
                             content = {@Content(mediaType = "application/json", schema = @Schema(allOf = {ParticipantDTO.class, Pageable.class}))}),
-                    @ApiResponse(responseCode = "204", description = "No content", content = @Content),
-                    @ApiResponse(responseCode = "400", description = "Required parameter is not present", content = @Content),
-                    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)})
+                    @ApiResponse(responseCode = "204", description = "No content.", content = @Content),
+                    @ApiResponse(responseCode = "400", description = "Search query parameter is missing or invalid.", content = @Content),
+                    @ApiResponse(responseCode = "500", description = "Internal server error.", content = @Content)})
     @GetMapping("/search")
     public ResponseEntity<Page<ParticipantDTO>> searchProjects(
             @RequestParam String query,

@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Optional;
 import java.util.Set;
 
-@Tag(name = "Project service", description = "Project controller API")
+@Tag(name = "Project service", description = "Provides endpoints for project related operations")
 @RestController
 @CrossOrigin
 @RequiredArgsConstructor
@@ -37,7 +37,8 @@ public class ProjectController {
     private final ProjectService projectService;
     private final ProjectMapper projectMapper;
 
-    @Operation(description = "Get project list by year and page",
+    @Operation(summary = "Get project list by year and page",
+            description = "Performs a search across projects based on a provided year, returning a paginated list",
             responses = {
             @ApiResponse(responseCode = "200", description = "Found projects",
                     content = {@Content(mediaType = "application/json", schema = @Schema(allOf = {ProjectSummaryDTO.class, Pageable.class}))}),
@@ -60,7 +61,8 @@ public class ProjectController {
         }
     }
 
-    @Operation(description = "Get project by id with participants info",
+    @Operation(summary = "Get project by id with participants info",
+            description = "Returns a project with participants info",
             responses = {
             @ApiResponse(responseCode = "200", description = "Found project",
                             content = {@Content(mediaType = "application/json", schema = @Schema(implementation = ProjectDetailsDTO.class))}),
@@ -69,8 +71,6 @@ public class ProjectController {
                     @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)})
     @GetMapping("/{id}")
     public ResponseEntity<ProjectDetailsDTO> getProjectById(@NonNull @PathVariable int id) {
-//        Optional<ProjectDetailsDTO> project = projectService.getProjectById(id)
-//                .flatMap(entity -> Optional.ofNullable(projectMapper.projectEntityToProjectDetailsDTO(entity)));
         Optional<ProjectDetailsDTO> project = projectService.getProjectById(id)
                 .map(projectMapper::projectEntityToProjectDetailsDTO);
         if (project.isEmpty()) {
@@ -82,7 +82,8 @@ public class ProjectController {
         }
     }
 
-    @Operation(description = "Search projects by name",
+    @Operation(summary = "Search projects by name",
+            description = "Performs a search across projects based on a provided name, returning a paginated list",
             responses = {
                     @ApiResponse(responseCode = "200", description = "Found projects",
                             content = {@Content(mediaType = "application/json", schema = @Schema(implementation = ProjectSummaryDTO.class))}),
@@ -105,7 +106,8 @@ public class ProjectController {
         }
     }
 
-    @Operation(description = "Filter projects by projects types",
+    @Operation(summary= "Filter projects by projects types",
+            description = "Performs a search across projects based on a provided project type, returning a paginated list",
             responses = {
                     @ApiResponse(responseCode = "200", description = "Found projects",
                             content = {@Content(mediaType = "application/json", schema = @Schema(implementation = ProjectSummaryDTO.class))}),
