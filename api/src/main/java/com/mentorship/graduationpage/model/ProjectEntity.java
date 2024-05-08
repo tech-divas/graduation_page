@@ -28,6 +28,7 @@ public class ProjectEntity {
     private String name;
     @NonNull
     private String description;
+    private String link;
     @ManyToOne
     @JoinColumn(name = "season_id")
     private SeasonEntity season;

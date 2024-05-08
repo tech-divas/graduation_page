@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.Set;
 
 import static org.springframework.data.domain.PageRequest.of;
 
@@ -17,17 +18,29 @@ import static org.springframework.data.domain.PageRequest.of;
 @Log4j2
 public class ProjectServiceIml implements ProjectService {
 
-    private final ProjectRepository projectRepository;
+    private final ProjectRepository repository;
 
     @Override
     public Page<ProjectEntity> getProjectsBySeasonName(String seasonName, int page, int size) {
         log.info("Fetching projects from page {} of size {}", page, size);
-        return projectRepository.findBySeasonName(seasonName, of(page, size));
+        return repository.findBySeasonName(seasonName, of(page, size));
     }
 
     @Override
     public Optional<ProjectEntity> getProjectById(int id) {
         log.info("Fetching project with id {}", id);
-        return projectRepository.findById(id);
+        return repository.findById(id);
+    }
+
+    @Override
+    public Page<ProjectEntity> searchProjects(String query, int page, int size) {
+        log.info("Fetching projects according to the query: {}", query);
+        return repository.findByNameContainingIgnoreCase(query, of(page, size));
+    }
+
+    @Override
+    public Page<ProjectEntity> filterByProjectType(Set<String> projectTypes, int page, int size) {
+        log.info("Fetching projects with types {}", projectTypes);
+        return repository.findDistinctByEnrollmentsProjectTypeNameInIgnoreCase(projectTypes, of(page, size));
     }
 }

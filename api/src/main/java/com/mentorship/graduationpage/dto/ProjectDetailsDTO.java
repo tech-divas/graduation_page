@@ -12,5 +12,6 @@ import java.util.Set;
 public class ProjectDetailsDTO {
     private String name;
     private String description;
+    private String link;
     private Set<ParticipantDTO> participants;
 }
