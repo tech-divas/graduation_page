@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../../../reusable_components/header/Header";
 import Menu from "../../../reusable_components/menu/Menu";
 import ProjectInfo from "./project_info/ProjectInfo";
@@ -7,11 +7,13 @@ import "./ProjectPage.css";
 import MenteeCard from "./MenteesProjectComp";
 import MentorCard from "./ProjectMentorComp";
 import Footer from "../../../reusable_components/footer/Footer";
+import { useParams } from "react-router-dom";
 
 const ProjectPage = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [selectedPerson, setSelectedPerson] = useState(null);
   const [isBackgroundBlurred, setIsBackgroundBlurred] = useState(false);
+  const { projectId } = useParams();
   const [person, setPerson] = useState();
 
   const fetchPeople = async () => {
@@ -42,21 +44,20 @@ const ProjectPage = () => {
     setIsPopupOpen(false);
     setIsBackgroundBlurred(false);
   };
-  
+
   return (
     <>
       <div className={`background ${isBackgroundBlurred ? "blurred" : ""}`}>
         <Header />
         <Menu />
-        <ProjectInfo />
+        <ProjectInfo projectId={projectId} />
 
         <div className="peopleList">
-          {person &&
+          {person && (
             <>
-           
               {person.participants
-                .filter(participant => participant.role === "Mentor")
-                .map(participant => (
+                .filter((participant) => participant.role === "Mentor")
+                .map((participant) => (
                   <MentorCard
                     key={participant.id}
                     name={participant.name}
@@ -66,10 +67,10 @@ const ProjectPage = () => {
                     onReadMore={() => handlePersonClick(selectedPerson)}
                   />
                 ))}
-          
+
               {person.participants
-                .filter(participant => participant.role !== "Mentor")
-                .map(participant => (
+                .filter((participant) => participant.role !== "Mentor")
+                .map((participant) => (
                   <MenteeCard
                     key={participant.id}
                     name={participant.name}
@@ -80,7 +81,7 @@ const ProjectPage = () => {
                   />
                 ))}
             </>
-          }
+          )}
         </div>
         <Popup
           isOpen={isPopupOpen}
