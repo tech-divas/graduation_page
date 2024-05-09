@@ -15,14 +15,15 @@
 }
 
 .peopleList {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   text-align: center;
   justify-content: center;
   align-items: center;
-  margin: 30px;
+  margin: 60px;
 }
 
 .peopleList > div {
-  flex-basis: 50%;
+  flex-basis: 30%;
 }
