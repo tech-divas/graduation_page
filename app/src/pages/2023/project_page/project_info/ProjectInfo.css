@@ -1,15 +1,19 @@
 .projectName {
   display: flex;
   justify-content: center;
+  text-align: center;
   align-items: center;
   background-color: var(--accent-color);
   border: none;
   border-radius: 2px;
   font-size: 36px;
-  height: 74px;
+  height: auto;
   width: 463px;
   font-family: "PT Mono";
   color: var(--text-primary);
+  padding: 10px 20px;
+  word-wrap: break-word;
+  box-shadow: 0 2px 10px 0 var(--secondary-color);
 }
 
 .projectNameContainer {
@@ -61,6 +65,7 @@
 
 .linkToProjectButton:hover {
   box-shadow: 0 2px 10px 0 var(--secondary-color);
+  color: #c6d1a1;
 }
 
 .projectDescriptionContainer {

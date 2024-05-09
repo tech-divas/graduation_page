@@ -1,5 +1,5 @@
 import "./ProjectInfo.css";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import mieraLacisImage from "./mieraLacis.png";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
@@ -20,7 +20,7 @@ const ProjectInfo = ({ projectId }) => {
   return (
     <div>
       <div className="projectNameContainer">
-        <button className="projectName">{projectData.name}</button>
+        <div className="projectName">{projectData.name}</div>
       </div>
 
       <div className="projectImages">
@@ -35,9 +35,16 @@ const ProjectInfo = ({ projectId }) => {
         </div>
       </div>
       <div className="linkToProjectButtonContainer">
-        <Link to="#">
-          <button className="linkToProjectButton">MieraLacis.lv</button>
-        </Link>
+        {projectData.link && (
+          <a
+            className="linkToProjectButton"
+            href={projectData.link}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Visit Project
+          </a>
+        )}
       </div>
       <div className="projectDescriptionContainer">
         <p className="projectDescription">{projectData.description}</p>

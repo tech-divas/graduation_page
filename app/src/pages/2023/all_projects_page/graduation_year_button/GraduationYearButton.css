@@ -5,11 +5,12 @@
   margin-top: 70px;
 }
 
-.graduationYearButton button {
+.graduationYearButton div {
   height: 74px;
   width: 463px;
-  display: felx;
+  display: flex;
   justify-content: center;
+  align-items: center;
   color: var(--text-primary);
   background-color: var(--accent-color);
   font-size: 36px;

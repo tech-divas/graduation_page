@@ -2,7 +2,7 @@ import "./GraduationYearButton.css";
 const GraduationYearButton = () => {
   return (
     <div className="graduationYearButton">
-      <button>Graduation Year 2023</button>
+      <div>Graduation Year 2023</div>
     </div>
   );
 };
