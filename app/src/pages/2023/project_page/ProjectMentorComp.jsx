@@ -2,14 +2,16 @@
 import React from "react";
 import "./ProjectMentorComp.css"
 
-const MentorCard = ({ name, type, link, onReadMore }) => {
+const MentorCard = ({ name, role, field, linkedin, onReadMore }) => {
   return (
     <div className="mentorCard">
-      <h2>{type}<br></br>{name}</h2>
-      <p><a href={link} target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+      <h2>{role}<br></br>{name}</h2>
+      <h3>{field}</h3>
+      <p><a href={linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
       <button onClick={onReadMore}>Read more</button>
     </div>
   );
 };
+
 
 export default MentorCard;

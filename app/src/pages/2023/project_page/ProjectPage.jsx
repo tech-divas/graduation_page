@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../../../reusable_components/header/Header";
 import Menu from "../../../reusable_components/menu/Menu";
 import ProjectInfo from "./project_info/ProjectInfo";
@@ -14,9 +14,28 @@ const ProjectPage = () => {
   const [selectedPerson, setSelectedPerson] = useState(null);
   const [isBackgroundBlurred, setIsBackgroundBlurred] = useState(false);
   const { projectId } = useParams();
+  const [person, setPerson] = useState();
 
-  const handlePersonClick = (person) => {
-    setSelectedPerson(person);
+  const fetchPeople = async () => {
+    try {
+      const response = await fetch(
+        "https://graduation-page.onrender.com/projects/8"
+      );
+      if (!response.ok) {
+        throw new Error("Failed to fetch projects");
+      }
+      const data = await response.json();
+      setPerson(data);
+    } catch (error) {
+      console.error("Error fetching person:", error);
+    }
+  };
+  useEffect(() => {
+    fetchPeople();
+  }, []);
+
+  const handlePersonClick = (selectedPerson) => {
+    setSelectedPerson(selectedPerson);
     setIsPopupOpen(true);
     setIsBackgroundBlurred(true);
   };
@@ -26,57 +45,6 @@ const ProjectPage = () => {
     setIsBackgroundBlurred(false);
   };
 
-  const people = [
-    {
-      name: "Ilze",
-      type: "mentor",
-      link: "https://www.linkedin.com/",
-      info: "Some additional info about a person.",
-    },
-    {
-      name: "Zane",
-      type: "mentor",
-      link: "https://www.linkedin.com/",
-      info: "Some additional info about a person.",
-    },
-    {
-      name: "Ieva",
-      type: "mentee",
-      link: "https://www.linkedin.com/",
-      info: "Some additional info about a person.",
-    },
-    {
-      name: "Kristine",
-      type: "mentee",
-      link: "https://www.linkedin.com/",
-      info: "Some additional info about a person.",
-    },
-    {
-      name: "Ieva",
-      type: "mentee",
-      link: "https://www.linkedin.com/",
-      info: "Some additional info about a person.",
-    },
-    {
-      name: "Kristine",
-      type: "mentee",
-      link: "https://www.linkedin.com/",
-      info: "Some additional info about a person.",
-    },
-    {
-      name: "Ieva",
-      type: "mentee",
-      link: "https://www.linkedin.com/",
-      info: "Some additional info about a person.",
-    },
-    {
-      name: "Kristine",
-      type: "mentee",
-      link: "https://www.linkedin.com/",
-      info: "Some additional info about a person.",
-    },
-  ];
-
   return (
     <>
       <div className={`background ${isBackgroundBlurred ? "blurred" : ""}`}>
@@ -85,25 +53,35 @@ const ProjectPage = () => {
         <ProjectInfo projectId={projectId} />
 
         <div className="peopleList">
-          {people.map((person, index) => (
-            <div key={index}>
-              {person.type === "mentor" ? (
-                <MentorCard
-                  name={person.name}
-                  type={person.type}
-                  link={person.link}
-                  onReadMore={() => handlePersonClick(person)}
-                />
-              ) : (
-                <MenteeCard
-                  name={person.name}
-                  type={person.type}
-                  link={person.link}
-                  onReadMore={() => handlePersonClick(person)}
-                />
-              )}
-            </div>
-          ))}
+          {person && (
+            <>
+              {person.participants
+                .filter((participant) => participant.role === "Mentor")
+                .map((participant) => (
+                  <MentorCard
+                    key={participant.id}
+                    name={participant.name}
+                    linkedin={participant.linkedin}
+                    field={participant.field}
+                    role={participant.role}
+                    onReadMore={() => handlePersonClick(selectedPerson)}
+                  />
+                ))}
+
+              {person.participants
+                .filter((participant) => participant.role !== "Mentor")
+                .map((participant) => (
+                  <MenteeCard
+                    key={participant.id}
+                    name={participant.name}
+                    linkedin={participant.linkedin}
+                    field={participant.field}
+                    role={participant.role}
+                    onReadMore={() => handlePersonClick(selectedPerson)}
+                  />
+                ))}
+            </>
+          )}
         </div>
         <Popup
           isOpen={isPopupOpen}

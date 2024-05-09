@@ -1,11 +1,12 @@
 import React from "react";
 import "./MenteesProjectComp.css";
 
-const MenteeCard = ({ name, type, link, onReadMore }) => {
+const MenteeCard = ({ name, role, field, linkedin, onReadMore }) => {
   return (
     <div className="menteeCard">
-      <h2>{type}<br></br>{name}</h2>
-      <p><a href={link} target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+      <h2>{role}<br></br>{name}</h2>
+      <h3>{field}</h3>
+      <p><a href={linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
       <button onClick={onReadMore}>Read more</button>
     </div>
   );

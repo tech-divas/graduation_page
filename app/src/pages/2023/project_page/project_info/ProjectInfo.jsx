@@ -1,5 +1,4 @@
 import "./ProjectInfo.css";
-// import { Link } from "react-router-dom";
 import mieraLacisImage from "./mieraLacis.png";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
