@@ -8,7 +8,7 @@ import MentorsPage from "./pages/2023/mentors _page/MentorsPage";
 
 function App() {
   return (
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <div className="App">
         <Routes>
           <Route path="/" element={<HomePage />} />
