@@ -43,7 +43,7 @@ public class ParticipantController {
             @Parameter(description = "The role of the participants to search for. Valid roles include mentees, mentors, experts.", required = true)
             @PathVariable String role,
             @RequestParam(defaultValue = "0", required = false) int page,
-            @RequestParam(defaultValue = "8", required = false) int size) {
+            @RequestParam(defaultValue = "40", required = false) int size) {
         Page<ParticipantDTO> participantDtoPage = participantService.findParticipantsByRole(role, page, size)
                 .map(participantMapper::participantEntityToDto);
         log.info("Mapped data:");
@@ -69,7 +69,7 @@ public class ParticipantController {
     public ResponseEntity<Page<ParticipantDTO>> searchProjects(
             @RequestParam String query,
             @RequestParam(defaultValue = "0", required = false) int page,
-            @RequestParam(defaultValue = "8", required = false) int size) {
+            @RequestParam(defaultValue = "40", required = false) int size) {
         Page<ParticipantDTO> participantDtoPage = participantService.searchParticipants(query, page, size)
                 .map(participantMapper::participantEntityToDto);
         log.info("Mapped data:");

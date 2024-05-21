@@ -47,7 +47,7 @@ public class ProjectController {
     public ResponseEntity<Page<ProjectSummaryDTO>> getProjectsBySeasonName(
             @RequestParam(defaultValue = "", required = false, value = "year") String seasonName,
             @RequestParam(defaultValue = "0", required = false) int page,
-            @RequestParam(defaultValue = "8", required = false) int size) {
+            @RequestParam(defaultValue = "16", required = false) int size) {
         Page<ProjectSummaryDTO> projectSummaryDTOPage = projectService.getProjectsBySeasonName(seasonName, page, size)
                 .map(projectMapper::projectEntityToProjectSummaryDTO);
         log.info("Mapped data:");
@@ -92,7 +92,7 @@ public class ProjectController {
     public ResponseEntity<Page<ProjectSummaryDTO>> searchProjects(
             @RequestParam String query,
             @RequestParam(defaultValue = "0", required = false) int page,
-            @RequestParam(defaultValue = "8", required = false) int size) {
+            @RequestParam(defaultValue = "16", required = false) int size) {
         Page<ProjectSummaryDTO> projectSummaryDTOPage = projectService.searchProjects(query, page, size)
                 .map(projectMapper::projectEntityToProjectSummaryDTO);
         log.info("Mapped data:");
