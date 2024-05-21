@@ -1,12 +1,18 @@
-import "./Footer.css"
+import "./Footer.css";
+import footerImage from "./FooterImage.png";
 export default function Footer() {
-    return <>
-    <div className="footerContainer">
-    <p>Contact us<br /> <br />
-    mentorship@rigatechgirls.com</p>
-    </div>
-    <div className="footerImage">
-        <img src="/FooterImage.png" alt="Footer Photo" />
-    </div>
+  return (
+    <>
+      <div className="footerContainer">
+        <p>
+          Contact us
+          <br /> <br />
+          mentorship@rigatechgirls.com
+        </p>
+      </div>
+      <div className="footerImage">
+        <img src={footerImage} alt="Footer Photo" />
+      </div>
     </>
+  );
 }
