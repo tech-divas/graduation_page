@@ -6,7 +6,7 @@ const Menu = () => {
     <nav role="navigation" className="menu">
       <ul>
         <li>
-          <a href="/">Home</a>
+          <a href="/graduation_page">Home</a>
         </li>
         <li>
           <a href="#">Projects</a>
