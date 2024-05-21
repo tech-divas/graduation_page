@@ -11,7 +11,7 @@
 
 @font-face {
   font-family: "PT Mono";
-  src: local("PT Mono"), url("./fonts/PTMono-Regular.ttf") format("truetype");
+  src: local("PT Mono"), url("./fonts/PT_Mono/PTMono-Regular.ttf") format("truetype");
 }
 body {
   margin: 0;
