@@ -18,50 +18,50 @@ const Menu = () => {
       </div>
       <ul className={`menu-items ${isOpen ? "open" : ""}`} onClick={closeMenu}>
         <li>
-          <Link to="/graduation_page">Home</Link>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/projects">Projects</Link>
+          <Link to="#">Projects</Link>
           <ul className="projectsDropdown">
             <li>
-              <Link to="/projects/2023">2023</Link>
+              <Link to="/projects">2023</Link>
             </li>
             <li>
-              <Link to="/projects/2024">2024</Link>
+              <Link to="#">2024</Link>
             </li>
           </ul>
         </li>
         <li>
-          <Link to="/mentees">Mentees</Link>
+          <Link to="#">Mentees</Link>
           <ul className="menteesDropdown">
             <li>
-              <Link to="/mentees/2023">2023</Link>
+              <Link to="/mentees">2023</Link>
             </li>
             <li>
-              <Link to="/mentees/2024">2024</Link>
+              <Link to="#">2024</Link>
             </li>
           </ul>
         </li>
         <li>
-          <Link to="/mentors">Mentors</Link>
+          <Link to="#">Mentors</Link>
           <ul className="mentorsDropdown">
             <li>
-              <Link to="/mentors/2023">2023</Link>
+              <Link to="/mentors">2023</Link>
             </li>
             <li>
-              <Link to="/mentors/2024">2024</Link>
+              <Link to="#">2024</Link>
             </li>
           </ul>
         </li>
         <li className="experts">
-          <Link to="/experts">Experts/Speakers</Link>
+          <Link to="#">Experts/Speakers</Link>
 
           <ul className="expertsDropdown">
             <li>
-              <Link to="/experts/2023">2023</Link>
+              <Link to="/experts">2023</Link>
             </li>
             <li>
-              <Link to="/experts/2024">2024</Link>
+              <Link to="#">2024</Link>
             </li>
           </ul>
         </li>
