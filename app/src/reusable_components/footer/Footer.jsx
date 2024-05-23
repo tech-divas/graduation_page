@@ -1,5 +1,5 @@
 import "./Footer.css";
-import footerImage from "./FooterImage.png";
+
 export default function Footer() {
   return (
     <>
@@ -10,9 +10,7 @@ export default function Footer() {
           mentorship@rigatechgirls.com
         </p>
       </div>
-      <div className="footerImage">
-        <img src={footerImage} alt="Footer Photo" />
-      </div>
+      <div className="footerImage"></div>
     </>
   );
 }

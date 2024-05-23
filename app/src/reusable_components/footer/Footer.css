@@ -1,24 +1,29 @@
 .footerContainer {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    position: relative;
-    width: 100%;
-  
-    background-color: var( --secondary-color);
-    color: var(--text-primary);
-    font-family: PT Mono;
-    font-size: 24px;
-    margin-top: 80px;
-    bottom: 10px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  background-color: var(--secondary-color);
+  color: var(--text-primary);
+  font-family: PT Mono;
+  font-size: 24px;
+  margin-top: 80px;
+  bottom: 10px;
 
-    box-shadow: inset 0 10px 15px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 10px 15px 0px rgba(0, 0, 0, 0.3);
 }
-.footerImage{
-    display: flex;
+.footerImage {
+  display: flex;
+  justify-content: center;
   position: relative;
   bottom: 0;
   width: 100%;
   height: 110px;
   margin-top: 5px;
+  overflow: hidden;
+  background-image: url("./FooterImage.png");
+  background-size: cover;
+  background-repeat: repeat-x;
+  background-position: center;
 }
