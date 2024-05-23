@@ -7,6 +7,13 @@ nav {
   font-size: 18px;
 }
 
+.hamburger {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+}
+
 ul li {
   margin: 0 auto;
   display: inline-block;
@@ -72,4 +79,45 @@ ul li ul li a {
   text-decoration: none;
   color: white;
   font-size: 20px;
+}
+
+/* Responsivness */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  ul.menu-items {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  ul.menu-items.open {
+    display: flex;
+  }
+
+  ul.menu-items li {
+    display: block;
+    text-align: left;
+    padding: 10px 20px;
+  }
+
+  ul li ul {
+    position: static;
+    visibility: visible;
+    opacity: 1;
+    display: block;
+    text-align: left;
+  }
+
+  ul li ul li {
+    margin-bottom: 10px;
+    text-align: left;
+  }
+  /* Center the years for Experts/Speakers */
+  .experts ul li {
+    text-align: center;
+    margin-left: -20px;
+  }
 }

@@ -1,54 +1,67 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Menu.css";
 
 const Menu = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
   return (
     <nav role="navigation" className="menu">
-      <ul>
+      <div className="hamburger" onClick={toggleMenu}>
+        ☰
+      </div>
+      <ul className={`menu-items ${isOpen ? "open" : ""}`} onClick={closeMenu}>
         <li>
-          <a href="/graduation_page">Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <a href="#">Projects</a>
+          <Link to="#">Projects</Link>
           <ul className="projectsDropdown">
             <li>
               <Link to="/projects">2023</Link>
             </li>
             <li>
-              <a href="#">2024</a>
+              <Link to="#">2024</Link>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#">Mentees</a>
+          <Link to="#">Mentees</Link>
           <ul className="menteesDropdown">
             <li>
               <Link to="/mentees">2023</Link>
             </li>
             <li>
-              <a href="#">2024</a>
+              <Link to="#">2024</Link>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#">Mentors</a>
+          <Link to="#">Mentors</Link>
           <ul className="mentorsDropdown">
             <li>
               <Link to="/mentors">2023</Link>
             </li>
             <li>
-              <a href="#">2024</a>
+              <Link to="#">2024</Link>
             </li>
           </ul>
         </li>
-        <li>
-          <a href="#">Experts/Speakers</a>
+        <li className="experts">
+          <Link to="#">Experts/Speakers</Link>
+
           <ul className="expertsDropdown">
             <li>
               <Link to="/experts">2023</Link>
             </li>
             <li>
-              <a href="#">2024</a>
+              <Link to="#">2024</Link>
             </li>
           </ul>
         </li>

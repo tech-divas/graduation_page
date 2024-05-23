@@ -7,11 +7,7 @@ const Header = () => {
     <div className="headerContainer">
       <div className="rtgLogo">
         <a href="https://rigatechgirls.com/">
-          <img
-            src={rtgLogo}
-            alt="Riga TechGirls Logo"
-            style={{ width: "250px" }}
-          />
+          <img src={rtgLogo} alt="Riga TechGirls Logo" className="logoImage" />
         </a>
       </div>
       <div className="headerText">
@@ -22,7 +18,7 @@ const Header = () => {
           <img
             src={mentorshipLogo}
             alt="Mentorship Program Logo"
-            style={{ width: "250px" }}
+            className="logoImage"
           />
         </a>
       </div>
