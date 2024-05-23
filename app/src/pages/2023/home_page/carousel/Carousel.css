@@ -1,0 +1,36 @@
+.carousel {
+  position: relative;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.carouselImages {
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+}
+
+.carouselImages img {
+  flex: 0 0 auto;
+  justify-content: center;
+  width: 30%;
+  margin-right: 10px;
+  transition: transform 0.5s ease;
+  object-fit: cover;
+}
+.carouselImages img:last-child {
+  margin-right: 0;
+}
+.carouselControl {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.carouselDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: gray;
+  margin: 0 5px;
+}
