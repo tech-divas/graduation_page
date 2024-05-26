@@ -41,15 +41,15 @@ This will start the Vite development server, and you can view your project in th
 
 ## Project Structure
 
-src/: Contains the source code of the project.
-reusable_components/: Reusable React components.
-pages/: Components representing different pages.
-api/: Contains backend code.
-dist/: Contains the production build.
+- src/: Contains the source code of the project.
+- reusable_components/: Reusable React components.
+- pages/: Components representing different pages.
+- api/: Contains backend code.
+- dist/: Contains the production build.
 
 ## Technologies Used
 
-JavaScript: The programming language used for development.
-React: A JavaScript library for building user interfaces.
-Vite: A fast build tool and development server.
-Java: Used for the backend API.
+- JavaScript: The programming language used for development.
+- React: A JavaScript library for building user interfaces.
+- Vite: A fast build tool and development server.
+- Java: Used for the backend API.
