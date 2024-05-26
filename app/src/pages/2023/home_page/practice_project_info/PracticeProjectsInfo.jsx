@@ -1,4 +1,5 @@
 import "./PracticeProjectsInfo.css";
+import { Link } from "react-router-dom";
 import birdImage from "./birdImage.jpg";
 import birdOnCircle from "./birdOnCircle.png";
 
@@ -30,9 +31,9 @@ const PracticeProjectsInfo = () => {
         />
       </div>
       <div className="practiceProjectYears">
-        <a href="/graduation_page/projects">
+        <Link to="/projects">
           <button>Practice Projects 2023</button>
-        </a>
+        </Link>
         <button>2024</button>
       </div>
     </div>
