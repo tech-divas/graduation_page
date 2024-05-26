@@ -6,7 +6,11 @@ const Header = () => {
   return (
     <div className="headerContainer">
       <div className="rtgLogo">
-        <a href="https://rigatechgirls.com/">
+        <a
+          href="https://rigatechgirls.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <img src={rtgLogo} alt="Riga TechGirls Logo" className="logoImage" />
         </a>
       </div>
@@ -14,7 +18,11 @@ const Header = () => {
         <p className="pageName">PRACTICE PROJECTS</p>
       </div>
       <div className="mentorshipLogo">
-        <a href="https://rigatechgirls.com/mentorship/">
+        <a
+          href="https://rigatechgirls.com/mentorship/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <img
             src={mentorshipLogo}
             alt="Mentorship Program Logo"
