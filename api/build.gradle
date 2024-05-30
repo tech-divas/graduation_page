@@ -48,9 +48,6 @@ dependencies {
 	testImplementation 'org.mockito:mockito-junit-jupiter:5.11.0'
 	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.2'
 	testImplementation 'org.mockito:mockito-core:5.11.0'
-
-	implementation 'com.amazonaws:aws-java-sdk-s3'
-	implementation platform('com.amazonaws:aws-java-sdk-bom:1.11.228')
 }
 
 configurations {
