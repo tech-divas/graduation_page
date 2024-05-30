@@ -3,7 +3,6 @@ package com.mentorship.graduationpage.controller;
 import com.mentorship.graduationpage.dto.ProjectDetailsDTO;
 import com.mentorship.graduationpage.dto.ProjectSummaryDTO;
 import com.mentorship.graduationpage.mapper.ProjectMapper;
-import com.mentorship.graduationpage.model.ProjectEntity;
 import com.mentorship.graduationpage.service.ProjectService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
