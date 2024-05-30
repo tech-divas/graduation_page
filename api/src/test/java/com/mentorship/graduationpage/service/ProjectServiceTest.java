@@ -48,7 +48,9 @@ public class ProjectServiceTest {
         Page<ProjectEntity> result = service.getProjectsBySeasonName("2023", 0, 2);
 
         assertNotNull(result);
+        assertEquals(expected, result);
         assertEquals(0, result.getNumber());
         assertEquals(2, result.getSize());
+
     }
 }

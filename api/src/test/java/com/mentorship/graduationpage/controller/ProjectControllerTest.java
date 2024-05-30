@@ -1,5 +1,6 @@
 package com.mentorship.graduationpage.controller;
 
+
 import com.mentorship.graduationpage.dto.ProjectSummaryDTO;
 import com.mentorship.graduationpage.mapper.ProjectMapper;
 import com.mentorship.graduationpage.model.ProjectEntity;
@@ -24,6 +25,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -37,7 +39,7 @@ class ProjectControllerTest {
     private ProjectService projectService;
     @MockBean
     private ProjectMapper projectMapper;
-    private static final String URL = "/api/projects";
+    private static final String URL = "/projects";
     private ProjectSummaryDTO dummyDto;
     private String seasonName;
     @BeforeEach
@@ -55,12 +57,15 @@ class ProjectControllerTest {
         when(projectMapper.projectEntityToProjectSummaryDTO(any(ProjectEntity.class))).thenReturn(dummyDto);
 
         mockMvc.perform(MockMvcRequestBuilders.get(URL)
+                        .header("Access-Control-Request-Method", "GET")
+                        .header("Origin", "*")
                         .param("year", seasonName)
                         .param("page", "0")
                         .param("size", "1"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.content.size()", is(projectPage.getContent().size())));
+                .andExpect(jsonPath("$.content.size()", is(projectPage.getContent().size())))
+                .andDo(print());
     }
 
     @Test
