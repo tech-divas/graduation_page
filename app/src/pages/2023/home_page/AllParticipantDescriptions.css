@@ -67,13 +67,14 @@
 }
 
 .mentors .textContent {
-    margin-left: 150px; 
+    margin-left: 180px; 
 }
 
 .experts-speakers .textContent {
-    margin-right: 140px; 
+    margin-right: 140px;
+    margin-left: 80px;
 }
 
 .mentees .textContent {
-    margin-left: 150px;
+    margin-left: 180px;
 }
