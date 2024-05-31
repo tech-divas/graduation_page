@@ -1,0 +1,40 @@
+.statistics {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 120px; 
+    margin-bottom: 80px;
+    margin-top: 60px;
+}
+
+.statItemMentor {
+    text-align: center;
+    color: #76a142;
+}
+
+.statItemMentee {
+    text-align: center;
+    color: var(--accent-color); 
+}
+
+.statItemProject {
+    text-align: center;
+    color: var(--primary-color); 
+}
+
+.statValue {
+    font-size: 80px; 
+    margin: 0;
+}
+
+.statLabel {
+    font-size: 20px; 
+    margin: 0;
+}
+
+.chart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
