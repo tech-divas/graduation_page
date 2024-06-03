@@ -8,20 +8,22 @@ import Search from "../../../reusable_components/search/Search";
 import "./AllProjectsPage.css";
 
 const AllProjectPage = () => {
- const [projects, setProjects] = useState([]);
- const [filteredProjects, setFilteredProjects] = useState([]);
+  const [projects, setProjects] = useState([]);
+  const [filteredProjects, setFilteredProjects] = useState([]);
 
- useEffect(() => {
-  fetch("https://graduation-page.onrender.com/projects/")
-  .then((response) => response.json())
-  .then((data) => {
-    setProjects(data);
-    setFilteredProjects(data);
-  })
-  .catch((error) => {
-    console.error("Error fetching data:", error);
-  })
- }, []); 
+  useEffect(() => {
+    fetch(
+      "https://graduation-page.onrender.com/projects?year=2023&page=0&size=16"
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setProjects(data.content);
+        setFilteredProjects(data.content);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
 
   const handleSearch = (query) => {
     const filtered = projects.filter((project) =>
