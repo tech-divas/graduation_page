@@ -11,18 +11,24 @@ const AllProjectPage = () => {
   const [projects, setProjects] = useState([]);
   const [filteredProjects, setFilteredProjects] = useState([]);
 
+  const fetchProjects = async () => {
+    try {
+      const response = await fetch("https://graduation-page.onrender.com/projects?year=2023&page=0&size=16");
+      if (!response.ok) {
+        throw new Error("Failed to fetch projects");
+      }
+
+      const data = await response.json();
+
+      setProjects(data.content);
+      
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
   useEffect(() => {
-    fetch(
-      "https://graduation-page.onrender.com/projects?year=2023&page=0&size=16"
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setProjects(data.content);
-        setFilteredProjects(data.content);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
+    fetchProjects();
   }, []);
 
   const handleSearch = (query) => {

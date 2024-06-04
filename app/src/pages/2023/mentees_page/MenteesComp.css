@@ -1,7 +1,28 @@
 .menteesContainer {
-
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 16px;
+    justify-content: center;
 }
 
 .menteeCard {
-    
+    background-color: var(--accent-color);
+    color: white;
+    padding: 16px;
+    flex: 1 0 30%;
+    max-width: 30%;
+    border-radius: 2px;
+    text-align: center;
+}
+
+.menteeLinkedInLink {
+    color: #013617;
+}
+
+.menteeButton {
+    border-radius: 30px;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+
 }
