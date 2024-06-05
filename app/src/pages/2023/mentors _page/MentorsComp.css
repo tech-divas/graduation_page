@@ -1,0 +1,27 @@
+
+.mentorsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 16px;
+    justify-content: center;
+}
+
+.mentorCard {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 16px;
+    flex: 1 0 30%;
+    max-width: 30%;
+    border-radius: 2px;
+    text-align: center;
+}
+
+.mentorLinkedInLink {
+    color: #ABE230;
+}
+
+.mentorButton {
+    border-radius: 30px;
+    background-color: var(--primary-color);
+}

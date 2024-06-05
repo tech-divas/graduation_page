@@ -222,7 +222,7 @@ export default function Statistics() {
           <p className="statName">Mentors&Experts 2023</p>
         </div>
         <div className="statItemMentee">
-          <p className="statValue">80</p>
+          <p className="statValue">88</p>
           <p className="statName">Mentees 2023</p>
         </div>
         <div className="statItemProject">
