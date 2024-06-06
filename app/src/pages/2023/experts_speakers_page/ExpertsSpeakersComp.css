@@ -1,5 +1,5 @@
 
-.menteesHeading{
+.expertsHeading{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,7 +9,7 @@
     font-size: 52px;
 }
 
-.menteesContainer {
+.expertContainer {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
@@ -17,7 +17,7 @@
     justify-content: center;
 }
 
-.menteeCard {
+.expertCard {
     background-color: var(--accent-color);
     color: white;
     padding: 16px;
@@ -25,21 +25,22 @@
     max-width: 30%;
     border-radius: 2px;
     text-align: center;
+    margin: 30px;
 }
 
-.menteeLinkedInLink {
+.expertLinkedInLink {
     color: #013617;
 }
 
-.menteeButtonContainer{
+.expertButtonContainer{
     display: flex;
     justify-content: flex-end;
 }
-
-.menteeButton {
+.expertButton {
     border-radius: 30px;
     background-color: var(--primary-color);
     color: var(--secondary-color);
+    font-size: 16px;
 }
 
 .loadMoreContainer {
