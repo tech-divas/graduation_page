@@ -50,7 +50,7 @@ export default function AllParticipantDescriptions() {
             Participants engage in hands-on projects, receiving guidance from
             team mentors and experts, fostering a sense of community and
             empowerment for personal and professional growth.{" "}
-            <button>Mentees</button>
+            <button className="menteesTextContentButton">Mentees</button>
           </p>
         </div>
       </div>

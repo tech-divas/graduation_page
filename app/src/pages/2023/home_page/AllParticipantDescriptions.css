@@ -77,3 +77,15 @@
 .menteesTextContent {
   margin-left: 180px;
 }
+
+.menteesTextContentButton{
+  background-color: #88b04b;
+  color: #000;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 16px;
+  display: inline-block; /* Ensure button is inline */
+  margin: 4px 15px; /* Adjust margin to align button */ 
+}

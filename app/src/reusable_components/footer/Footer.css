@@ -1,3 +1,4 @@
+
 .footerContainer {
   display: flex;
   text-align: center;
@@ -7,12 +8,31 @@
   background-color: var(--secondary-color);
   color: var(--text-primary);
   font-family: PT Mono;
-  font-size: 24px;
   margin-top: 80px;
   bottom: 10px;
-
-  box-shadow: inset 0 10px 15px 0px rgba(0, 0, 0, 0.3);
 }
+
+.contactInfo{
+  padding: 20px;
+}
+
+h4{
+font-size: 20px;  
+}
+
+.footerText{
+  text-align: left;
+  padding: 20px;
+  font-size: 14px;
+}
+
+.rtgLinks{
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 14px;
+  margin: 30px;
+}
+
 .footerImage {
   display: flex;
   justify-content: center;

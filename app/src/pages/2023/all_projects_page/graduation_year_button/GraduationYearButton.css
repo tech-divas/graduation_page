@@ -6,14 +6,11 @@
 }
 
 .graduationYearButton div {
-  height: 74px;
-  width: 463px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--text-primary);
-  background-color: var(--accent-color);
-  font-size: 36px;
+  color: var(--accent-color);
+  font-size: 52px;
   font-family: "PT Mono";
   border: none;
   border-radius: 2px;

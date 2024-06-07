@@ -22,7 +22,8 @@ h1 {
   margin: 0;
   text-transform: uppercase;
   font-weight: normal;
-  font-size: 42px;
+  font-size: 52px;
+  color: var(--accent-color);
 }
 .descriptionContainer {
   display: flex;
@@ -45,8 +46,9 @@ p {
 .practiceProjectYears {
   display: flex;
   justify-content: center;
-  gap: 10px; /* Space between buttons */
-  margin: 50px 0;
+  gap: 16px; /* Space between buttons */
+  margin-top: 100px;
+  margin-bottom: 30px;
 }
 button {
   display: flex;
