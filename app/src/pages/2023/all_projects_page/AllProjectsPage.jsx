@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ProjectCard from "./project_card/ProjectCard";
-import GraduationYearButton from "./graduation_year_button/GraduationYearButton";
+import PracticeProjectsHeader from "./practiceProjectsHeader/practiceProjectsHeader";
 import Search from "../../../reusable_components/search/Search";
 import PageTemplate from "../../../reusable_components/PageTemplate";
 import "./AllProjectsPage.css";
@@ -51,7 +51,7 @@ const AllProjectPage = () => {
   };
   return (
     <PageTemplate>
-      <GraduationYearButton />
+      <PracticeProjectsHeader />
       <Search handleSearch={handleSearch} />
 
       <div className="cardsContainer">
