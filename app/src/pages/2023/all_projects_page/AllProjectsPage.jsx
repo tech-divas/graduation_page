@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
-import Header from "../../../reusable_components/header/Header";
-import Footer from "../../../reusable_components/footer/Footer";
-import Menu from "../../../reusable_components/menu/Menu";
 import ProjectCard from "./project_card/ProjectCard";
 import GraduationYearButton from "./graduation_year_button/GraduationYearButton";
 import Search from "../../../reusable_components/search/Search";
+import PageTemplate from "../../../reusable_components/PageTemplate";
 import "./AllProjectsPage.css";
 
 const AllProjectPage = () => {
@@ -16,7 +14,9 @@ const AllProjectPage = () => {
   const fetchProjects = async (page = 0) => {
     setLoading(true);
     try {
-      const response = await fetch(`https://graduation-page.onrender.com/projects?year=2023&page=${page}&size=10`);
+      const response = await fetch(
+        `https://graduation-page.onrender.com/projects?year=2023&page=${page}&size=10`
+      );
       if (!response.ok) {
         throw new Error("Failed to fetch projects");
       }
@@ -25,7 +25,6 @@ const AllProjectPage = () => {
 
       setProjects((prevProjects) => [...prevProjects, ...data.content]);
       setCurrentPage(page);
-      
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
@@ -36,6 +35,9 @@ const AllProjectPage = () => {
   useEffect(() => {
     fetchProjects(0);
   }, []);
+  if (!projects) {
+    return <div>Loading...</div>;
+  }
 
   const handleLoadMore = () => {
     fetchProjects(currentPage + 1);
@@ -48,10 +50,7 @@ const AllProjectPage = () => {
     setFilteredProjects(filtered);
   };
   return (
-    <>
-    <div>
-      <Header />
-      <Menu />
+    <PageTemplate>
       <GraduationYearButton />
       <Search handleSearch={handleSearch} />
 
@@ -66,9 +65,7 @@ const AllProjectPage = () => {
           {loading ? "Loading..." : "Load More"}
         </button>
       </div>
-      <Footer />
-    </div>
-    </>
+    </PageTemplate>
   );
 };
 

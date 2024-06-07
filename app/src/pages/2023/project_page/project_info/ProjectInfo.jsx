@@ -1,21 +1,35 @@
 import "./ProjectInfo.css";
-import mieraLacisImage from "./mieraLacis.png";
+import mieraLacisImage1 from "./mieraLacis1.png";
+import mieraLacisImage2 from "./mieraLacis2.png";
+import mieraLacisImage3 from "./mieraLacis3.png";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
-
 const ProjectInfo = ({ projectId }) => {
   const [projectData, setProjectData] = useState(null);
 
   useEffect(() => {
-    fetch(`https://graduation-page.onrender.com/projects/${projectId}`)
-      .then((response) => response.json())
-      .then((data) => setProjectData(data))
-      .catch((error) => console.error("Error fetching project data", error));
+    const fetchProjectData = async () => {
+      try {
+        const response = await fetch(
+          `https://graduation-page.onrender.com/projects/${projectId}`
+        );
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        setProjectData(data);
+      } catch (error) {
+        console.error("Error fetching project data", error);
+      }
+    };
+
+    fetchProjectData();
   }, [projectId]);
 
   if (!projectData) {
     return <div>Loading...</div>;
   }
+
   return (
     <div>
       <div className="projectNameContainer">
@@ -24,13 +38,13 @@ const ProjectInfo = ({ projectId }) => {
 
       <div className="projectImages">
         <div className="imageContainer">
-          <img src={mieraLacisImage} alt="Project Image" />
+          <img src={mieraLacisImage1} alt="Project Image" />
         </div>
         <div className="imageContainer">
-          <img src={mieraLacisImage} alt="Project Image" />
+          <img src={mieraLacisImage2} alt="Project Image" />
         </div>
         <div className="imageContainer">
-          <img src={mieraLacisImage} alt="Project Image" />
+          <img src={mieraLacisImage3} alt="Project Image" />
         </div>
       </div>
       <div className="linkToProjectButtonContainer">

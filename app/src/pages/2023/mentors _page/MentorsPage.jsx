@@ -1,17 +1,12 @@
-import Header from "../../../reusable_components/header/Header";
-import Menu from "../../../reusable_components/menu/Menu";
-import Footer from "../../../reusable_components/footer/Footer";
-import "./MentorsPage.css"
+import PageTemplate from "../../../reusable_components/PageTemplate";
+import "./MentorsPage.css";
 import MentorsComp from "./MentorsComp";
 
 const MentorsPage = () => {
   return (
-    <div>
-      <Header />
-      <Menu />
+    <PageTemplate>
       <MentorsComp />
-      <Footer />
-    </div>
+    </PageTemplate>
   );
 };
 

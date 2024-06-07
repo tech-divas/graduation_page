@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
-import Header from "../../../reusable_components/header/Header";
-import Menu from "../../../reusable_components/menu/Menu";
 import ProjectInfo from "./project_info/ProjectInfo";
 import Popup from "../../../reusable_components/popup/Popup";
 import "./ProjectPage.css";
 import MenteeCard from "./MenteesProjectComp";
 import MentorCard from "./ProjectMentorComp";
-import Footer from "../../../reusable_components/footer/Footer";
 import { useParams } from "react-router-dom";
+import PageTemplate from "../../../reusable_components/PageTemplate";
 
 const ProjectPage = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -47,50 +45,51 @@ const ProjectPage = () => {
 
   return (
     <>
-      <div className={`background ${isBackgroundBlurred ? "blurred" : ""}`}>
-        <Header />
-        <Menu />
-        <ProjectInfo projectId={projectId} />
+      <PageTemplate>
+        <div className={`background ${isBackgroundBlurred ? "blurred" : ""}`}>
+          <ProjectInfo projectId={projectId} />
 
-        <div className="peopleList">
-          {person && (
-            <>
-              {person.participants
-                .filter((participant) => participant.role === "Mentor")
-                .map((participant) => (
-                  <MentorCard
-                    key={participant.id}
-                    name={participant.name}
-                    linkedin={participant.linkedin}
-                    field={participant.field}
-                    role={participant.role}
-                    onReadMore={() => handlePersonClick(selectedPerson)}
-                  />
-                ))}
+          <div className="peopleList">
+            {person && (
+              <>
+                {person.participants
+                  .filter((participant) => participant.role === "Mentor")
+                  .map((participant) => (
+                    <MentorCard
+                      key={participant.id}
+                      name={participant.name}
+                      linkedin={participant.linkedin}
+                      field={participant.field}
+                      role={participant.role}
+                      onReadMore={() => handlePersonClick(participant)}
+                    />
+                  ))}
 
-              {person.participants
-                .filter((participant) => participant.role !== "Mentor")
-                .map((participant) => (
-                  <MenteeCard
-                    key={participant.id}
-                    name={participant.name}
-                    linkedin={participant.linkedin}
-                    field={participant.field}
-                    role={participant.role}
-                    onReadMore={() => handlePersonClick(selectedPerson)}
-                  />
-                ))}
-            </>
-          )}
+                {person.participants
+                  .filter((participant) => participant.role !== "Mentor")
+                  .map((participant) => (
+                    <MenteeCard
+                      key={participant.id}
+                      name={participant.name}
+                      linkedin={participant.linkedin}
+                      field={participant.field}
+                      role={participant.role}
+                      onReadMore={() => handlePersonClick(participant)}
+                    />
+                  ))}
+              </>
+            )}
+          </div>
+
+          <Popup
+            isOpen={isPopupOpen}
+            onClose={handleClosePopup}
+            message={`Display data for ${selectedPerson}`}
+          />
+
+          {isBackgroundBlurred && <div className="backgroundBlur"></div>}
         </div>
-        <Popup
-          isOpen={isPopupOpen}
-          onClose={handleClosePopup}
-          message={`Display data for ${selectedPerson}`}
-        />
-        {isBackgroundBlurred && <div className="backgroundBlur"></div>}
-      </div>
-      <Footer />
+      </PageTemplate>
     </>
   );
 };

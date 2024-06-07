@@ -1,15 +1,11 @@
-import Header from "../../../reusable_components/header/Header";
-import Menu from "../../../reusable_components/menu/Menu";
+import PageTemplate from "../../../reusable_components/PageTemplate";
 import ExpertsSpeakersComp from "./ExpertsSpeakersComp";
-import Footer from "../../../reusable_components/footer/Footer"
+
 const ExpertsSpeakersPage = () => {
   return (
-    <div>
-      <Header />
-      <Menu />
+    <PageTemplate>
       <ExpertsSpeakersComp />
-      <Footer />
-    </div>
+    </PageTemplate>
   );
 };
 

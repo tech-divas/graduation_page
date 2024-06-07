@@ -1,15 +1,15 @@
 import "./Carousel.css";
-import mieraLacis from "./mieraLacis.png";
-import coworking from "./Untitled design (1).jpg";
-import women from "./Untitled design (2).jpg";
+import bookworms from "./bookworms.png";
+import neitrals from "./neitrals.png";
+import sortIt from "./sortIt.png";
 
 const Carousel = () => {
   return (
     <div className="carousel">
       <div className="carouselImages">
-        <img src={mieraLacis} alt="Image 1" />
-        <img src={coworking} alt="Image 2" />
-        <img src={women} alt="Image 3" />
+        <img src={bookworms} alt="Bookworms" />
+        <img src={neitrals} alt="neitrals.lv" />
+        <img src={sortIt} alt="Sort It" />
       </div>
 
       <div className="carouselControl">
