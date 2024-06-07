@@ -51,7 +51,8 @@ export default function Statistics() {
         "App & Mobile Development",
         "Cybersecurity",
         "Startups & Entrepreneurship",
-        "No IT field mentioned",
+        "Scrum Master",
+        "No IT field mentioned"
       ],
       axisLabel: {
         textStyle: {
@@ -64,7 +65,7 @@ export default function Statistics() {
       {
         name: "Mentors&Experts",
         type: "bar",
-        data: [4, 6, 1, 2, 1, 1, 2, 4, 0, 0, 0, 9],
+        data: [4, 5, 1, 1, 1, 1, 2, 3, 0, 0, 0, 0, 9],
         itemStyle: {
           color: "#76a142",
         },
@@ -72,7 +73,7 @@ export default function Statistics() {
       {
         name: "Mentees",
         type: "bar",
-        data: [6, 10, 9, 0, 9, 18, 13, 19, 1, 1, 1, 0],
+        data: [6, 10, 8, 0, 9, 18, 11, 19, 1, 1, 1, 1, 0],
         itemStyle: {
           color: "#008046",
         },
@@ -218,7 +219,7 @@ export default function Statistics() {
     <>
       <div className="statistics">
         <div className="statItemMentor">
-          <p className="statValue">30</p>
+          <p className="statValue">27</p>
           <p className="statName">Mentors&Experts 2023</p>
         </div>
         <div className="statItemMentee">

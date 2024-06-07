@@ -8,14 +8,27 @@ margin-right: 60px;
 }
 
 
-button{
+.mentorButton{
+
     color: #024C20;
     background-color: var(--primary-color);
     cursor: pointer;
   border: none;
   border-radius: 30px;
-  font-size: 18px;
+  font-size: 16px;
   font-family: "PT Mono";
   transition: box-shadow 0.3s ease;
   margin-bottom: 15px;
+}
+
+.mentorLink{
+  color: var(--primary-color);
+}
+
+.mentorRole{
+  font-size: 18px;
+}
+
+.mentorField{
+  font-size: 16px;
 }

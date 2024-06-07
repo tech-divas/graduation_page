@@ -5,3 +5,28 @@ margin: 30px;
 margin-left: 60px;
 margin-right: 60px;
 }
+
+.menteeButton{
+
+    color: #024C20;
+    background-color: var(--primary-color);
+    cursor: pointer;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  font-family: "PT Mono";
+  transition: box-shadow 0.3s ease;
+  margin-bottom: 15px;
+}
+
+.menteeLink{
+  color:  #013617;
+}
+
+.menteeRole{
+  font-size: 18px;
+}
+
+.menteeField{
+  font-size: 16px;
+}
