@@ -1,80 +1,79 @@
-
 .allParticipants {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
-    padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 32px;
 }
 
 .participant {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 16px;
-    width: 80%;
-    position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  width: 80%;
+  position: relative;
 }
 
 .birdImg {
-    width: 200px;
-    height: auto;
+  width: 200px;
+  height: auto;
 }
 
 .textContent {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .textContent p {
-    margin: 0;
-    padding: 16px;
-    flex: 1;
-    position: relative; /* Allow relative positioning within text */
+  margin: 0;
+  padding: 16px;
+  flex: 1;
+  position: relative; /* Allow relative positioning within text */
 }
 
 .textContent button {
-    background-color: #88b04b;
-    color: #000;
-    border: none;
-    border-radius: 20px;
-    padding: 8px 16px;
-    cursor: pointer;
-    font-size: 16px;
-    display: inline-block; /* Ensure button is inline */
-    margin: 4px 15px; /* Adjust margin to align button */
+  background-color: #88b04b;
+  color: #000;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 16px;
+  display: inline-block; /* Ensure button is inline */
+  margin: 4px 15px; /* Adjust margin to align button */
 }
 
 .textContent button:hover {
-    background-color: #76a142;
+  background-color: #76a142;
 }
 
 .mentors img {
-    position: absolute;
-    left: -30px;
+  position: absolute;
+  left: -30px;
 }
 
 .experts-speakers img {
-    position: absolute;
-    right: -30px;
+  position: absolute;
+  right: -30px;
 }
 
 .mentees img {
-    position: absolute;
-    left: -30px;
+  position: absolute;
+  left: -30px;
 }
 
 .mentors .textContent {
-    margin-left: 180px; 
+  margin-left: 180px;
 }
 
 .experts-speakers .textContent {
-    margin-right: 140px;
-    margin-left: 80px;
+  margin-right: 140px;
+  margin-left: 80px;
 }
 
-.mentees .textContent {
-    margin-left: 180px;
+.menteesTextContent {
+  margin-left: 180px;
 }

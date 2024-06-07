@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
-import Header from "../../../reusable_components/header/Header";
-import Footer from "../../../reusable_components/footer/Footer";
-import Menu from "../../../reusable_components/menu/Menu";
 import ProjectCard from "./project_card/ProjectCard";
 import GraduationYearButton from "./graduation_year_button/GraduationYearButton";
 import Search from "../../../reusable_components/search/Search";
+import PageTemplate from "../../../reusable_components/PageTemplate";
 import "./AllProjectsPage.css";
 
 const AllProjectPage = () => {
@@ -24,6 +22,9 @@ const AllProjectPage = () => {
         console.error("Error fetching data:", error);
       });
   }, []);
+  if (!projects) {
+    return <div>Loading...</div>;
+  }
 
   const handleSearch = (query) => {
     const filtered = projects.filter((project) =>
@@ -32,9 +33,7 @@ const AllProjectPage = () => {
     setFilteredProjects(filtered);
   };
   return (
-    <div>
-      <Header />
-      <Menu />
+    <PageTemplate>
       <GraduationYearButton />
       <Search handleSearch={handleSearch} />
 
@@ -44,8 +43,7 @@ const AllProjectPage = () => {
           <ProjectCard key={project.id} project={project} />
         ))}
       </div>
-      <Footer />
-    </div>
+    </PageTemplate>
   );
 };
 
