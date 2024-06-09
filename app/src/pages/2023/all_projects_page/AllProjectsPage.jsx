@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ProjectCard from "./project_card/ProjectCard";
-import GraduationYearButton from "./graduation_year_button/GraduationYearButton";
+import PracticeProjectsHeader from "./practiceProjectsHeader/practiceProjectsHeader";
 import Search from "../../../reusable_components/search/Search";
 import PageTemplate from "../../../reusable_components/PageTemplate";
 import "./AllProjectsPage.css";
@@ -22,8 +22,25 @@ const AllProjectPage = () => {
       }
 
       const data = await response.json();
+      const newProjects = data.content;
 
-      setProjects((prevProjects) => [...prevProjects, ...data.content]);
+      // Code modified to remove any duplicate projects
+      setProjects((prevProjects) => {
+        const projectSet = new Set(prevProjects.map((project) => project.id));
+        const uniqueNewProjects = newProjects.filter(
+          (project) => !projectSet.has(project.id)
+        );
+        return [...prevProjects, ...uniqueNewProjects];
+      });
+
+      setFilteredProjects((prevProjects) => {
+        const projectSet = new Set(prevProjects.map((project) => project.id));
+        const uniqueNewProjects = newProjects.filter(
+          (project) => !projectSet.has(project.id)
+        );
+        return [...prevProjects, ...uniqueNewProjects];
+      });
+
       setCurrentPage(page);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -35,6 +52,7 @@ const AllProjectPage = () => {
   useEffect(() => {
     fetchProjects(0);
   }, []);
+
   if (!projects) {
     return <div>Loading...</div>;
   }
@@ -44,21 +62,28 @@ const AllProjectPage = () => {
   };
 
   const handleSearch = (query) => {
-    const filtered = projects.filter((project) =>
-      project.name.toLowerCase().includes(query.toLowerCase())
-    );
-    setFilteredProjects(filtered);
+    if (!query) {
+      setFilteredProjects(projects);
+    } else {
+      const filtered = projects.filter((project) =>
+        project.name.toLowerCase().includes(query.toLowerCase())
+      );
+      setFilteredProjects(filtered);
+    }
   };
+
   return (
     <PageTemplate>
-      <GraduationYearButton />
+      <PracticeProjectsHeader />
       <Search handleSearch={handleSearch} />
 
       <div className="cardsContainer">
-        {filteredProjects.map((project) => (
-          // Project name as prop passed down to ProjectCard
-          <ProjectCard key={project.id} project={project} />
-        ))}
+        {filteredProjects.map((project, index) => {
+          return (
+            // To avoid duplicating keys, index was added
+            <ProjectCard key={`${project.id}-${index}`} project={project} />
+          );
+        })}
       </div>
       <div className="loadMoreContainer">
         <button onClick={handleLoadMore} disabled={loading}>

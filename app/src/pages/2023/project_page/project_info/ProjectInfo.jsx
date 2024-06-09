@@ -1,5 +1,5 @@
 import "./ProjectInfo.css";
-import mieraLacisImage1 from "./mieraLacis1.png";
+import mieraLacisImage1 from "./mieraLacis1.jpeg";
 import mieraLacisImage2 from "./mieraLacis2.png";
 import mieraLacisImage3 from "./mieraLacis3.png";
 import PropTypes from "prop-types";
@@ -27,13 +27,17 @@ const ProjectInfo = ({ projectId }) => {
   }, [projectId]);
 
   if (!projectData) {
-    return <div>Loading...</div>;
+    return (
+      <div className="loadMoreContainer">
+        <button className="loadMoreButton">Loading...</button>
+      </div>
+    );
   }
 
   return (
     <div>
       <div className="projectNameContainer">
-        <div className="projectName">{projectData.name}</div>
+        <h1 className="projectName">{projectData.name}</h1>
       </div>
 
       <div className="projectImages">
@@ -47,6 +51,7 @@ const ProjectInfo = ({ projectId }) => {
           <img src={mieraLacisImage3} alt="Project Image" />
         </div>
       </div>
+
       <div className="linkToProjectButtonContainer">
         {projectData.link && (
           <a
@@ -59,6 +64,7 @@ const ProjectInfo = ({ projectId }) => {
           </a>
         )}
       </div>
+
       <div className="projectDescriptionContainer">
         <p className="projectDescription">{projectData.description}</p>
       </div>
