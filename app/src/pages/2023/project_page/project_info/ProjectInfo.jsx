@@ -1,5 +1,5 @@
 import "./ProjectInfo.css";
-import mieraLacisImage1 from "./mieraLacis1.png";
+import mieraLacisImage1 from "./mieraLacis1.jpeg";
 import mieraLacisImage2 from "./mieraLacis2.png";
 import mieraLacisImage3 from "./mieraLacis3.png";
 import PropTypes from "prop-types";
