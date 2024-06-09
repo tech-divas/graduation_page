@@ -6,6 +6,10 @@ margin-left: 60px;
 margin-right: 60px;
 }
 
+.projectMenteeButton{
+  display: flex;
+  justify-content: flex-end;
+}
 .menteeButton{
 
     color: #024C20;
