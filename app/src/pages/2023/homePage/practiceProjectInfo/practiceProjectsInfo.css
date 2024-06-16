@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Mono&display=swap");
+
+.practiceProjectInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  font-family: "PT Mono", monospace;
+}
+
+.titleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px 0;
+}
+.birdImage {
+  margin-right: 10px;
+}
+h1 {
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: normal;
+  font-size: 52px;
+  color: var(--accent-color);
+}
+.descriptionContainer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: left;
+}
+p {
+  margin: 20px;
+  max-width: 800px;
+  font-size: 18px;
+  line-height: 1.6;
+}
+.birdOnCircle {
+  width: 300px;
+  height: auto;
+}
+
+.practiceProjectYears {
+  display: flex;
+  justify-content: center;
+  gap: 16px; /* Space between buttons */
+  margin-top: 100px;
+  margin-bottom: 30px;
+}
+.practiceProjectYearsButton {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  background-color: var(--accent-color);
+  border: none;
+  border-radius: 2px;
+  font-size: 24px;
+  height: auto;
+  cursor: pointer;
+  font-family: "PT Mono";
+  color: var(--text-primary);
+  padding: 10px 20px;
+  word-wrap: break-word;
+}
+.practiceProjectYearsButton:hover{
+  background-color: rgba(0, 128, 70, 0.8);
+
+}
