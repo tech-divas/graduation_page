@@ -7,7 +7,10 @@ margin-left: 60px;
 margin-right: 60px;
 }
 
-
+.projectMentorButton{
+  display: flex;
+  justify-content: flex-end;
+}
 .mentorButton{
 
     color: #024C20;
