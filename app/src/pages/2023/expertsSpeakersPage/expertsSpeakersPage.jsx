@@ -1,5 +1,5 @@
 import PageTemplate from "../../../reusableComponents/pageTemplate";
-import ExpertsSpeakersComp from "./expertsSpeakersComp";
+import ExpertsSpeakersComp from "../expertsSpeakersPage/expertsSpeakersComp/expertsSpeakersComp";
 
 const ExpertsSpeakersPage = () => {
   return (
