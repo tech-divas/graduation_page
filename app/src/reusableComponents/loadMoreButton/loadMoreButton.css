@@ -1,0 +1,22 @@
+.loadMoreContainer {
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.loadMoreButton {
+    border: none;
+  background-color: var(--accent-color);
+  color: black;
+  padding: 8px 16px;
+  margin: 0 8px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.loadMoreButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}

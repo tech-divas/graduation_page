@@ -42,7 +42,7 @@ font-size: 20px;
   height: 110px;
   margin-top: 5px;
   overflow: hidden;
-  background-image: url("./FooterImage.png");
+  background-image: url("./footerImage.png");
   background-size: cover;
   background-repeat: repeat-x;
   background-position: center;

@@ -3,6 +3,7 @@ import ProjectCard from "./projectCard/projectCard";
 import PracticeProjectsHeader from "./practiceProjectsHeader/practiceProjectsHeader";
 import Search from "../../../reusableComponents/search/search";
 import PageTemplate from "../../../reusableComponents/pageTemplate";
+import LoadMoreButton from "../../../reusableComponents/loadMoreButton/loadMoreButton";
 import "./allProjectsPage.css";
 
 const AllProjectPage = () => {
@@ -51,14 +52,24 @@ const AllProjectPage = () => {
     fetchProjects(currentPage + 1);
   };
 
-  const handleSearch = (query) => {
-    if (!query) {
-      setFilteredProjects(projects);
-    } else {
-      const filtered = projects.filter((project) =>
-        project.name.toLowerCase().includes(query.toLowerCase())
+  const handleSearch = async (query) => {
+    setLoading(true);
+    try {
+      const encodedQuery = encodeURIComponent(query);
+      const response = await fetch(
+        `https://graduation-page.onrender.com/projects/search?query=${encodedQuery}&page=0&size=16`
       );
-      setFilteredProjects(filtered);
+      if (!response.ok) {
+        throw new Error("Failed to search projects");
+      }
+      const text = await response.text();
+      const data = text ? JSON.parse(text) : { content: [] };
+
+      setFilteredProjects(data.content);
+    } catch (error) {
+      console.error("Error searching projects:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -75,13 +86,11 @@ const AllProjectPage = () => {
           );
         })}
       </div>
-      {hasMoreProjects && (
-        <div className="loadMoreContainer">
-          <button onClick={handleLoadMore} disabled={loading}>
-            {loading ? "Loading..." : "Load More"}
-          </button>
-        </div>
-      )}
+      <LoadMoreButton
+        loading={loading}
+        hasMoreItems={hasMoreProjects}
+        handleLoadMore={handleLoadMore}
+      />
     </PageTemplate>
   );
 };

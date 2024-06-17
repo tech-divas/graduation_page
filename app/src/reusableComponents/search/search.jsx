@@ -5,8 +5,9 @@ import "./search.css";
 const Search = ({ handleSearch, placeholderText }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const handleChange = (e) => {
-    setSearchQuery(e.target.value);
-    handleSearch(e.target.value);
+    const query = e.target.value;
+    setSearchQuery(query);
+    handleSearch(query);
   };
   return (
     <div className="searchContainer">
