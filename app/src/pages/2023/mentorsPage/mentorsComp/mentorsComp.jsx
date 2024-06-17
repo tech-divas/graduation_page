@@ -1,4 +1,4 @@
-// import "./MentorsComp.css";
+import "./mentorsComp.css";
 import { useState, useEffect } from "react";
 
 export default function MentorsComp() {
@@ -37,9 +37,6 @@ export default function MentorsComp() {
 
   return (
     <>
-      <div>
-        <h1 className="mentorsHeading">Mentors Year 2023</h1>
-      </div>
       <div className="mentorsContainer">
         {mentors.map((mentor, id) => (
           <div className="mentorCard" key={id}>

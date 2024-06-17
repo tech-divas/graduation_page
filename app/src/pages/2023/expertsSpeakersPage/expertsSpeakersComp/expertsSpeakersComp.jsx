@@ -35,9 +35,6 @@ export default function ExpertsSpeakersComp() {
 
   return (
     <>
-      <div>
-        <h1 className="expertsHeading">Experts and speakers Year 2023</h1>
-      </div>
       <div className="expertContainer">
         {experts.map((expert, id) => (
           <div className="expertCard" key={id}>
